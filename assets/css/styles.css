@@ -1,0 +1,333 @@
+/* ========================================
+   Santa Cruz Brewery - Estilos Personalizados
+   Tailwind CSS con colores personalizados
+   ======================================== */
+
+/* Definición de colores personalizados como variables CSS */
+:root {
+    /* Colores principales */
+    --color-primary: #5B1101;
+    --color-primary-dark: #290500;
+    --color-secondary: #EBD4BD;
+    --color-accent: #B66A2E;
+    --color-natural: #7A2A1A;
+    
+    /* Neutros */
+    --color-gray-800: #333333;
+    --color-gray-600: #6B6B6B;
+    
+    /* Backgrounds */
+    --color-cream: #F7EFE6;
+    --color-gray-50: #FAFAFA;
+}
+
+/* ========================================
+   ESTILOS GENERALES
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-gray-800);
+    background-color: var(--color-cream);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-primary);
+}
+
+/* ========================================
+   UTILIDADES DE COLOR PERSONALIZADAS
+   ======================================== */
+
+/* Primary */
+.bg-primary-900 { background-color: var(--color-primary); }
+.text-primary-900 { color: var(--color-primary); }
+.border-primary-900 { border-color: var(--color-primary); }
+
+/* Secondary */
+.bg-secondary-200 { background-color: var(--color-secondary); }
+.text-secondary-200 { color: var(--color-secondary); }
+.border-secondary-200 { border-color: var(--color-secondary); }
+
+/* Accent */
+.bg-accent-600 { background-color: var(--color-accent); }
+.text-accent-600 { color: var(--color-accent); }
+.hover\:text-accent-600:hover { color: var(--color-accent); }
+.hover\:bg-accent-600:hover { background-color: var(--color-accent); }
+
+/* Natural */
+.bg-natural-700 { background-color: var(--color-natural); }
+.text-natural-700 { color: var(--color-natural); }
+
+/* Neutrals */
+.bg-gray-800 { background-color: var(--color-gray-800); }
+.text-gray-800 { color: var(--color-gray-800); }
+.bg-gray-600 { background-color: var(--color-gray-600); }
+.text-gray-600 { color: var(--color-gray-600); }
+
+/* Backgrounds */
+.bg-cream-50 { background-color: var(--color-cream); }
+.bg-gray-50 { background-color: var(--color-gray-50); }
+
+/* Footer dark */
+.bg-footer-dark { background-color: var(--color-primary-dark); }
+
+/* ========================================
+   HEADER & NAV
+   ======================================== */
+
+.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(91, 17, 1, 0.15);
+    background-color: #290500; /* Fondo más oscuro para mejor contraste */
+}
+
+.nav-link {
+    color: #FFFFFF; /* Texto blanco para mejor visibilidad */
+    font-weight: 400;
+    transition: color 0.3s ease;
+    padding: 0.75rem 1.25rem;
+}
+
+.nav-link:hover {
+    color: #EBD4BD; /* Color secondary en hover */
+}
+
+.nav-link.active {
+    color: #EBD4BD; /* Color secondary para activo */
+    font-weight: 600;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+.btn-custom {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.btn-accent {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.btn-accent:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   EFECTO IMÁGENES
+   ======================================== */
+
+.img-grayscale {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.img-grayscale:hover {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+}
+
+.img-hover-zoom {
+    transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   SECCIONES
+   ======================================== */
+
+.section-padding {
+    padding: 5rem 0;
+}
+
+.section-padding-lg {
+    padding: 8rem 0;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-gray-600);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+/* Decorative line under titles */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 1.5rem auto 0;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer-section {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+    padding: 4rem 0 2rem;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.footer-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 0.25rem 0;
+}
+
+.footer-link:hover {
+    color: var(--color-accent);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(235, 212, 189, 0.2);
+    padding-top: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--color-secondary);
+    opacity: 0.8;
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(91, 17, 1, 0.2);
+}
+
+.bg-overlay {
+    background: linear-gradient(135deg, rgba(91, 17, 1, 0.9), rgba(41, 5, 0, 0.8));
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-padding {
+        padding: 3rem 0;
+    }
+    
+    .section-padding-lg {
+        padding: 4rem 0;
+    }
+    
+    .footer-section {
+        padding: 2rem 0 1rem;
+    }
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.fade-in-delay {
+    animation: fadeIn 0.6s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.fade-in-delay-2 {
+    animation: fadeIn 0.6s ease 0.4s forwards;
+    opacity: 0;
+}

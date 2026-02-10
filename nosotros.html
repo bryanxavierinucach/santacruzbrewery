@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce la historia y pasión de Santa Cruz Brewery - Cervecería artesanal dedicada a la elaboración de cervezas de alta calidad.">
+    <title>Sobre Nosotros - Santa Cruz Brewery</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5B1101',
+                        secondary: '#EBD4BD',
+                        accent: '#B66A2E',
+                        natural: '#7A2A1A',
+                        footer: '#290500'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-sans text-gray-800 bg-cream-50">
+    
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+    <header class="header-sticky bg-primary-900 shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Navegación Izquierda -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="restaurante.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Restaurante</a>
+                    <a href="planta.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Planta</a>
+                    <a href="blog.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Blog</a>
+                </div>
+                
+                <!-- Logo Centro -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center justify-center">
+                        <img src="assets/images/logo.png" alt="Santa Cruz Brewery Logo" class="h-20 w-auto filter brightness-125">
+                    </a>
+                </div>
+                
+                <!-- Navegación Derecha -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Inicio</a>
+                    <a href="nosotros.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Sobre Nosotros</a>
+                    <a href="tienda.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Tienda</a>
+                    <a href="contacto.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Contacto</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-secondary-200 hover:text-accent-600 focus:outline-none" aria-label="Menú">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1504253163759-c23fcc6126cb?w=1920&q=80" 
+                 alt="Nuestra historia cervecera" 
+                 class="w-full h-full object-cover img-grayscale">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-primary-900/70 to-primary/80"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-serif font-bold text-white mb-4 fade-in">
+                Sobre Nosotros
+            </h1>
+            <p class="text-xl text-secondary-200 max-w-2xl mx-auto fade-in-delay">
+                Conoce la pasión y tradición que hay detrás de cada cerveza que elaboramos
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         NUESTRA HISTORIA
+    ======================================== -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="section-title text-4xl md:text-5xl mb-6">Nuestra Historia</h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Santa Cruz Brewery nació en 2015 de un sueño compartido entre 
+                        tres amigos apasionados por la cerveza artesanal. Lo que comenzó 
+                        como un proyecto casero en un garage, se convirtió en una de las 
+                        cervecerías más reconocidas de la región.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Inspirados en las técnicas tradicionales europeas y con la 
+                        determinación de crear algo único, nuestros fundadores 
+                        estudiaron el arte cervecero en Alemania y Bélgica antes de 
+                        establecer nuestra planta en Santa Cruz.
+                    </p>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        Hoy, continuamos honrando ese espíritu innovator mientras 
+                        respetamos los métodos artesanales que hacen especial a cada 
+                        una de nuestras cervezas.
+                    </p>
+                    <a href="planta.html" class="btn-custom btn-primary">
+                        <i class="fas fa-industry mr-2"></i>
+                        Visita Nuestra Planta
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=80" 
+                         alt="Fundadores de Santa Cruz Brewery" 
+                         class="w-full h-auto mb-8 img-grayscale hover:shadow-xl transition-shadow duration-500">
+                    <img src="https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=800&q=80" 
+                         alt="Proceso de elaboración" 
+                         class="w-full h-auto img-grayscale hover:shadow-xl transition-shadow duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         MISIÓN Y VISIÓN
+    ======================================== -->
+    <section class="section-padding bg-cream-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Misión -->
+                <div class="bg-white p-10 border-t-4 border-accent-600 hover-lift shadow-lg">
+                    <i class="fas fa-bullseye text-5xl text-accent-600 mb-6"></i>
+                    <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">Nuestra Misión</h3>
+                    <p class="text-gray-600 text-lg">
+                        Elaborar cervezas artesanales de excepcional calidad, utilizando 
+                        ingredientes seleccionados y procesos sostenibles. Nos comprometemos 
+                        a ofrecer a nuestros clientes una experiencia única que celebre la 
+                        tradición cervecera mientras inovamos constantemente.
+                    </p>
+                </div>
+                
+                <!-- Visión -->
+                <div class="bg-white p-10 border-t-4 border-accent-600 hover-lift shadow-lg">
+                    <i class="fas fa-eye text-5xl text-accent-600 mb-6"></i>
+                    <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">Nuestra Visión</h3>
+                    <p class="text-gray-600 text-lg">
+                        Ser la cervecería artesanal líder en Ecuador, reconocida nacional 
+                        e internacionalmente por la calidad excepcional de nuestros productos 
+                        y por promover la cultura cervecera artesanal como parte del patrimonio 
+                        gastronómico del país.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         VALORES
+    ======================================== -->
+    <section class="section-padding bg-primary-900 text-secondary-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl text-secondary-200 mb-4">Nuestros Valores</h2>
+                <p class="text-secondary-200/80 text-lg max-w-2xl mx-auto">
+                    Los principios que guían cada decisión y cada cerveza que elaboramos
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Valor 1 -->
+                <div class="text-center p-6">
+                    <i class="fas fa-heart text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-secondary-200 mb-2">Pasión</h3>
+                    <p class="text-secondary-200/70 text-sm">
+                        Amamos lo que hacemos y se nota en cada sorbo
+                    </p>
+                </div>
+                
+                <!-- Valor 2 -->
+                <div class="text-center p-6">
+                    <i class="fas fa-leaf text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-secondary-200 mb-2">Calidad</h3>
+                    <p class="text-secondary-200/70 text-sm">
+                        Solo lo mejor para nuestros clientes
+                    </p>
+                </div>
+                
+                <!-- Valor 3 -->
+                <div class="text-center p-6">
+                    <i class="fas fa-recycle text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-secondary-200 mb-2">Sostenibilidad</h3>
+                    <p class="text-secondary-200/70 text-sm">
+                        Cuidamos el medio ambiente en cada proceso
+                    </p>
+                </div>
+                
+                <!-- Valor 4 -->
+                <div class="text-center p-6">
+                    <i class="fas fa-users text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-secondary-200 mb-2">Comunidad</h3>
+                    <p class="text-secondary-200/70 text-sm">
+                        Construimos relaciones duraderas
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         EQUIPO
+    ======================================== -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl mb-4">Nuestro Equipo</h2>
+                <p class="section-subtitle text-lg">
+                    Las manos y corazones detrás de cada cerveza
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Miembro 1 -->
+                <div class="bg-white overflow-hidden hover-lift shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" 
+                         alt="Maestro Cervecero" 
+                         class="w-full h-72 object-cover img-grayscale">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-serif font-bold text-primary-900 mb-1">Carlos Mendoza</h3>
+                        <p class="text-accent-600 font-semibold mb-3">Maestro Cervecero</p>
+                        <p class="text-gray-600 text-sm">
+                            Con más de 15 años de experiencia, Carlos lidera nuestro 
+                            equipo de elaboración con sabiduría y creatividad.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 2 -->
+                <div class="bg-white overflow-hidden hover-lift shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" 
+                         alt="Gerente General" 
+                         class="w-full h-72 object-cover img-grayscale">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-serif font-bold text-primary-900 mb-1">María González</h3>
+                        <p class="text-accent-600 font-semibold mb-3">Gerente General</p>
+                        <p class="text-gray-600 text-sm">
+                            María garantiza que cada aspecto de nuestra operación 
+                            mantenga los más altos estándares de calidad.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 3 -->
+                <div class="bg-white overflow-hidden hover-lift shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" 
+                         alt="Chef Ejecutivo" 
+                         class="w-full h-72 object-cover img-grayscale">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-serif font-bold text-primary-900 mb-1">Roberto Jiménez</h3>
+                        <p class="text-accent-600 font-semibold mb-3">Chef Ejecutivo</p>
+                        <p class="text-gray-600 text-sm">
+                            Roberto crea los platillos perfectos para acompañar 
+                            nuestras cervezas en el restaurante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACTO / CTA
+    ======================================== -->
+    <section class="section-padding bg-primary-900 text-secondary-200">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">¿Quieres Conocer Más?</h2>
+            <p class="text-xl text-secondary-200/80 mb-8 max-w-2xl mx-auto">
+                Agenda una visita a nuestra planta y descubre el proceso de elaboración
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="contacto.html" class="btn-custom btn-primary bg-secondary-200 text-primary-900 hover:bg-accent-600 hover:text-white">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    Agenda tu Visita
+                </a>
+                <a href="tienda.html" class="btn-custom btn-outline border-secondary-200 text-secondary-200 hover:bg-secondary-200 hover:text-primary-900">
+                    <i class="fas fa-shopping-basket mr-2"></i>
+                    Ver Productos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer-section">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Columna 1: Logo y Descripción -->
+                <div>
+                    <img src="assets/images/logo.png" alt="Santa Cruz Brewery Logo" class="h-16 w-auto mb-6">
+                    <p class="text-secondary-200/80 mb-6">
+                        Cervecería artesanal dedicada a la elaboración de cervezas 
+                        de alta calidad con pasión, tradición e innovación.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Columna 2: Navegación -->
+                <div>
+                    <h4 class="footer-title">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="nosotros.html" class="footer-link">Sobre Nosotros</a></li>
+                        <li><a href="tienda.html" class="footer-link">Tienda</a></li>
+                        <li><a href="restaurante.html" class="footer-link">Restaurante</a></li>
+                        <li><a href="planta.html" class="footer-link">Planta de Producción</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contacto.html" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 3: Contacto -->
+                <div>
+                    <h4 class="footer-title">Contáctanos</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-accent-600"></i>
+                            <span class="text-secondary-200/80">
+                                Av. Principal 123<br>
+                                Santa Cruz, Ecuador
+                            </span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent-600"></i>
+                            <a href="tel:+1234567890" class="text-secondary-200/80 hover:text-accent-600 transition-colors">
+                                +1 (234) 567-890
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent-600"></i>
+                            <a href="mailto:info@santacruzbrewery.com" class="text-secondary-200/80 hover:text-accent-600 transition-colors">
+                                info@santacruzbrewery.com
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-accent-600"></i>
+                            <span class="text-secondary-200/80">
+                                Lun - Dom: 11:00 - 23:00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Santa Cruz Brewery. Todos los derechos reservados.</p>
+                <p class="text-sm mt-2">
+                    Designed with <i class="fas fa-heart text-accent-600"></i> by Santa Cruz Brewery Team
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

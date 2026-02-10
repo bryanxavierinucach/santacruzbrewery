@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Planta de Producción Santa Cruz Brewery - Descubre nuestro proceso de elaboración de cervezas artesanales. Tours disponibles.">
+    <title>Planta de Producción - Santa Cruz Brewery</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5B1101',
+                        secondary: '#EBD4BD',
+                        accent: '#B66A2E',
+                        natural: '#7A2A1A',
+                        footer: '#290500'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-sans text-gray-800 bg-cream-50">
+    
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+    <header class="header-sticky bg-primary-900 shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Navegación Izquierda -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="restaurante.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Restaurante</a>
+                    <a href="planta.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Planta</a>
+                    <a href="blog.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Blog</a>
+                </div>
+                
+                <!-- Logo Centro -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center justify-center">
+                        <img src="assets/images/logo.png" alt="Santa Cruz Brewery Logo" class="h-20 w-auto filter brightness-125">
+                    </a>
+                </div>
+                
+                <!-- Navegación Derecha -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Inicio</a>
+                    <a href="nosotros.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Sobre Nosotros</a>
+                    <a href="tienda.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Tienda</a>
+                    <a href="contacto.html" class="nav-link text-white hover:text-secondary-200 transition-colors duration-300">Contacto</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-secondary-200 hover:text-accent-600 focus:outline-none" aria-label="Menú">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1584225064785-c62a8b43d148?w=1920&q=80" 
+                 alt="Planta de producción cervecera" 
+                 class="w-full h-full object-cover img-grayscale">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-primary-900/70 to-primary/80"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-serif font-bold text-white mb-4 fade-in">
+                Nuestra Planta
+            </h1>
+            <p class="text-xl text-secondary-200 max-w-2xl mx-auto fade-in-delay">
+                Descubre el arte y la ciencia detrás de cada cerveza que elaboramos
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROCESO DE ELABORACIÓN
+    ======================================== -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl mb-4">El Proceso de Elaboración</h2>
+                <p class="section-subtitle text-lg">
+                    Desde el grano hasta tu vaso, cada paso cuenta una historia
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">1. Malteado y Molienda</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Todo comienza con la selección de las mejores maltas. Las granos 
+                        son molidos suavemente para exponer el almidón, preparan el 
+                        mosto que será el corazón de nuestra cerveza.
+                    </p>
+                    <p class="text-gray-600 text-lg">
+                        Controlamos cuidadosamente la humedad y temperatura durante 
+                        el malteado para desarrollar los sabores y colores 
+                        característicos de cada estilo.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=80" 
+                         alt="Proceso de malteado" 
+                         class="w-full h-auto img-grayscale hover:shadow-xl transition-shadow duration-500">
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=800&q=80" 
+                         alt="Proceso de cocción" 
+                         class="w-full h-auto img-grayscale hover:shadow-xl transition-shadow duration-500">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">2. Maceración y Cocción</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        La malta molida se mezcla con agua caliente en nuestro macerador 
+                        de acero inoxidable. Aquí los enzimas transforman el almidón 
+                        en azúcares fermentables.
+                    </p>
+                    <p class="text-gray-600 text-lg">
+                        El mosto resultante se cocina con lúpulos, creando el equilibrio 
+                        perfecto entre amargor, aroma y sabor que define cada una 
+                        de nuestras cervezas.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">3. Fermentación</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        El mosto enfriado se transfiere a nuestros tanques de fermentación 
+                        donde las levaduras trabajan su magia. Durante días o semanas, 
+                        los azúcares se transforman en alcohol y CO2.
+                    </p>
+                    <p class="text-gray-600 text-lg">
+                        Controlamos la temperatura con precisión para cada estilo de 
+                        cerveza, desarrollando los perfiles aromáticos y de sabor 
+                        únicos que nos caracterizan.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1559526323-cb2f2fe2591b?w=800&q=80" 
+                         alt="Tanques de fermentación" 
+                         class="w-full h-auto img-grayscale hover:shadow-xl transition-shadow duration-500">
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1518176258769-f227c798150e?w=800&q=80" 
+                         alt="Embotellado" 
+                         class="w-full h-auto img-grayscale hover:shadow-xl transition-shadow duration-500">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h3 class="text-3xl font-serif font-bold text-primary-900 mb-4">4. Embotellado y Maduración</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Después de la fermentación, nuestras cervezas descansan para 
+                        desarrollar su carácter completo. Luego son embotelladas 
+                        o envasadas con el mayor cuidado.
+                    </p>
+                    <p class="text-gray-600 text-lg">
+                        Cada lote es probado rigurosamente para garantizar que cumple 
+                        con nuestros estándares de calidad antes de llegar a tu mesa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         EQUIPOS E INSTALACIONES
+    ======================================== -->
+    <section class="section-padding bg-cream-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl mb-4">Nuestras Instalaciones</h2>
+                <p class="section-subtitle text-lg">
+                    Equipamiento de última generación en un espacio tradicional
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-white shadow-lg">
+                    <i class="fas fa-flask text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-lg font-serif font-bold text-primary-900 mb-2">Laboratorio</h3>
+                    <p class="text-gray-600 text-sm">Control de calidad constante</p>
+                </div>
+                <div class="text-center p-6 bg-white shadow-lg">
+                    <i class="fas fa-temperature-high text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-lg font-serif font-bold text-primary-900 mb-2">Control Térmico</h3>
+                    <p class="text-gray-600 text-sm">Sistemas de refrigeración</p>
+                </div>
+                <div class="text-center p-6 bg-white shadow-lg">
+                    <i class="fas fa-filter text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-lg font-serif font-bold text-primary-900 mb-2">Filtración</h3>
+                    <p class="text-gray-600 text-sm">Tecnología de vanguardia</p>
+                </div>
+                <div class="text-center p-6 bg-white shadow-lg">
+                    <i class="fas fa-wine-bottle text-4xl text-accent-600 mb-4"></i>
+                    <h3 class="text-lg font-serif font-bold text-primary-900 mb-2">Envasado</h3>
+                    <p class="text-gray-600 text-sm">Línea automatizada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TOURS
+    ======================================== -->
+    <section class="section-padding bg-primary-900 text-secondary-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl text-secondary-200 mb-4">Tours por la Planta</h2>
+                <p class="text-secondary-200/80 text-lg max-w-2xl mx-auto">
+                    Vive la experiencia de cerca y aprende los secretos de la cerveza artesanal
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tour Básico -->
+                <div class="bg-white/10 p-8 border border-secondary-200/20 hover:bg-white/20 transition-colors">
+                    <h3 class="text-2xl font-serif font-bold text-secondary-200 mb-4">Tour Básico</h3>
+                    <p class="text-secondary-200/70 mb-6">
+                        Una introducción al mundo de la cerveza artesanal. 
+                        Perfecto para principiantes.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Duración: 1 hora</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Degustación de 3 cervezas</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Exploración de la planta</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Souvenir incluido</li>
+                    </ul>
+                    <p class="text-3xl font-serif font-bold text-accent-600 mb-6">$15.00</p>
+                    <a href="contacto.html" class="block text-center py-3 bg-secondary-200 text-primary-900 font-semibold hover:bg-accent-600 hover:text-white transition-colors">
+                        Reservar Ahora
+                    </a>
+                </div>
+                
+                <!-- Tour Premium -->
+                <div class="bg-secondary-200 p-8 relative transform md:-translate-y-4 shadow-2xl">
+                    <span class="absolute top-0 right-0 bg-accent-600 text-white px-3 py-1 text-sm font-semibold">Más Popular</span>
+                    <h3 class="text-2xl font-serif font-bold text-primary-900 mb-4">Tour Premium</h3>
+                    <p class="text-gray-600 mb-6">
+                        La experiencia completa para los verdaderos amantes de la cerveza.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Duración: 2 horas</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Degustación de 5 cervezas</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Tour completo detallado</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Maridaje incluido</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Souvenir premium</li>
+                    </ul>
+                    <p class="text-3xl font-serif font-bold text-accent-600 mb-6">$35.00</p>
+                    <a href="contacto.html" class="block text-center py-3 bg-primary-900 text-white font-semibold hover:bg-accent-600 transition-colors">
+                        Reservar Ahora
+                    </a>
+                </div>
+                
+                <!-- Tour Privado -->
+                <div class="bg-white/10 p-8 border border-secondary-200/20 hover:bg-white/20 transition-colors">
+                    <h3 class="text-2xl font-serif font-bold text-secondary-200 mb-4">Tour Privado</h3>
+                    <p class="text-secondary-200/70 mb-6">
+                        Una experiencia exclusiva para grupos especiales.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Duración: 3 horas</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Degustación ilimitada</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Guía especializado</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Alimentos incluidos</li>
+                        <li><i class="fas fa-check text-accent-600 mr-2"></i>Pack de regalo</li>
+                    </ul>
+                    <p class="text-3xl font-serif font-bold text-accent-600 mb-6">$75.00</p>
+                    <a href="contacto.html" class="block text-center py-3 bg-secondary-200 text-primary-900 font-semibold hover:bg-accent-600 hover:text-white transition-colors">
+                        Reservar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer-section">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Columna 1: Logo y Descripción -->
+                <div>
+                    <img src="assets/images/logo.png" alt="Santa Cruz Brewery Logo" class="h-16 w-auto mb-6">
+                    <p class="text-secondary-200/80 mb-6">
+                        Cervecería artesanal dedicada a la elaboración de cervezas 
+                        de alta calidad con pasión, tradición e innovación.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-secondary-200 hover:text-accent-600 transition-colors text-xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Columna 2: Navegación -->
+                <div>
+                    <h4 class="footer-title">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="nosotros.html" class="footer-link">Sobre Nosotros</a></li>
+                        <li><a href="tienda.html" class="footer-link">Tienda</a></li>
+                        <li><a href="restaurante.html" class="footer-link">Restaurante</a></li>
+                        <li><a href="planta.html" class="footer-link">Planta de Producción</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contacto.html" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 3: Contacto -->
+                <div>
+                    <h4 class="footer-title">Contáctanos</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-accent-600"></i>
+                            <span class="text-secondary-200/80">
+                                Av. Principal 123<br>
+                                Santa Cruz, Ecuador
+                            </span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent-600"></i>
+                            <a href="tel:+1234567890" class="text-secondary-200/80 hover:text-accent-600 transition-colors">
+                                +1 (234) 567-890
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent-600"></i>
+                            <a href="mailto:info@santacruzbrewery.com" class="text-secondary-200/80 hover:text-accent-600 transition-colors">
+                                info@santacruzbrewery.com
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-accent-600"></i>
+                            <span class="text-secondary-200/80">
+                                Lun - Dom: 11:00 - 23:00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Santa Cruz Brewery. Todos los derechos reservados.</p>
+                <p class="text-sm mt-2">
+                    Designed with <i class="fas fa-heart text-accent-600"></i> by Santa Cruz Brewery Team
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
