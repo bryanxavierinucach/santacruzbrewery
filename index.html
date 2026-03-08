@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hero Menu Example</title>
 <link rel="stylesheet" href="styles.css">
+<script>
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    const hero = document.querySelector('.hero');
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+    
+    // Calculate opacity based on scroll position
+    const opacity = 1 - (scrollY / heroHeight);
+    hero.style.opacity = Math.max(0, opacity);
+    
+    // Add scrolled class to header when past hero
+    if (scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+</script>
 </head>
 
 <body>

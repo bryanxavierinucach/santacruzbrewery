@@ -18,6 +18,24 @@ width:100%;
 background:transparent;
 z-index:1000;
 border-bottom:1px solid rgba(255,255,255,0.4);
+transition:background 0.3s ease, border-color 0.3s ease;
+}
+
+.header.scrolled{
+background:#ffffff;
+border-bottom:1px solid rgba(0,0,0,0.1);
+}
+
+.header.scrolled .logo{
+color:#000000;
+}
+
+.header.scrolled .menu a{
+color:#000000;
+}
+
+.header.scrolled .menu a:hover{
+color:#555555;
 }
 
 /* CONTENEDOR */
@@ -62,6 +80,7 @@ background-image:url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploa
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
+transition:opacity 0.1s ease;
 }
 
 /* FEATURED SECTION */
