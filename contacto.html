@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Santacruz Brewery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const hero = document.querySelector('.hero-simple');
+            const scrollY = window.scrollY;
+            const heroHeight = hero.offsetHeight;
+            
+            // Calculate opacity based on scroll position
+            const opacity = 1 - (scrollY / heroHeight);
+            hero.style.opacity = Math.max(0, opacity);
+            
+            // Add scrolled class to header when past hero
+            if (scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function(){
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.menu');
+            
+            if(menuToggle && menu){
+                menuToggle.addEventListener('click', function(){
+                    menu.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">Santacruz Brewery</div>
+
+        <nav class="menu">
+            <a href="index.html">Our Beers</a>
+            <a href="#">Stories</a>
+            <a href="#">About Us</a>
+            <a href="#">Locations</a>
+            <a href="#">Shop</a>
+        </nav>
+
+        <button class="menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<section class="hero-simple">
+    <div class="hero-simple-content">
+        <h1>Conversemos</h1>
+    </div>
+</section>
+
+<section class="contacto">
+    <div class="contacto-container">
+        
+        <!-- Columna Izquierda: Info -->
+        <div class="contacto-info">
+            <h2>Hablemos</h2>
+            <p class="contacto-descripcion">
+                Estamos emocionados de escuchar sobre tu próximo proyecto cervecero. 
+                Ya sea que estés pensando en abrir tu propia planta, necesites asesoría 
+                técnica, o quieras distribuir nuestras artesanales, nuestro equipo está 
+                listo para ayudarte a hacer realidad tu visión.
+            </p>
+            
+            <div class="contacto-detalles">
+                <div class="contacto-item">
+                    <span class="contacto-icon">✉️</span>
+                    <div>
+                        <strong>Email</strong>
+                        <p>info@santacruzbrewery.com</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <span class="contacto-icon">📞</span>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <p>+593 99 123 4567</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <span class="contacto-icon">📍</span>
+                    <div>
+                        <strong>Ubicación</strong>
+                        <p>Santa Cruz, Galápagos, Ecuador</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <span class="contacto-icon">🕐</span>
+                    <div>
+                        <strong>Horario</strong>
+                        <p>Lunes - Viernes: 8:00 - 18:00</p>
+                        <p>Sábados: 9:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contacto-proceso">
+                <h3>Nuestro Proceso de Consulta</h3>
+                <p>Cada proyecto es único. Cuando nos contactas, iniciamos una conversación 
+                detallada para entender tus objetivos, presupuesto ytimeline. Luego de 
+                nuestra primera reunión, te enviaremos una propuesta personalizada con 
+                los siguientes pasos. No hay compromiso obligatorio, queremos que te 
+                sientas cómodo antes de avanzar.</p>
+            </div>
+        </div>
+        
+        <!-- Columna Derecha: Formulario -->
+        <div class="contacto-formulario">
+            <form class="form-contacto">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+593 99 000 0000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipo-proyecto">Tipo de Proyecto</label>
+                    <select id="tipo-proyecto" name="tipo-proyecto" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="nueva-planta">Nueva Planta Cervecera</option>
+                        <option value="asesoria">Asesoría Técnica</option>
+                        <option value="distribucion">Distribución</option>
+                        <option value="franchising">Franchising</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="presupuesto">Presupuesto Estimado</label>
+                    <select id="presupuesto" name="presupuesto">
+                        <option value="">Selecciona un rango</option>
+                        <option value="menos-10k">Menos de $10,000</option>
+                        <option value="10k-25k">$10,000 - $25,000</option>
+                        <option value="25k-50k">$25,000 - $50,000</option>
+                        <option value="50k-100k">$50,000 - $100,000</option>
+                        <option value="mas-100k">Más de $100,000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos más sobre tu proyecto..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar Mensaje</button>
+            </form>
+        </div>
+        
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h3>Santacruz Brewery</h3>
+            <p>Cervezas artesanales de calidad premium</p>
+        </div>
+        <div class="footer-links">
+            <h4>Enlaces</h4>
+            <ul>
+                <li><a href="index.html">Nuestras Cervezas</a></li>
+                <li><a href="#">Historias</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Ubicaciones</a></li>
+                <li><a href="#">Tienda</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contacto</h4>
+            <ul>
+                <li>📍 Santa Cruz, Ecuador</li>
+                <li>📞 +593 99 123 4567</li>
+                <li>✉️ info@santacruzbrewery.com</li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Santacruz Brewery. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>
