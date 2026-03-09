@@ -130,7 +130,7 @@ transform:scale(1.05);
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:120px;
+    gap:380px;
     flex-wrap:wrap;
     list-style:none;
     padding:0;
@@ -158,7 +158,7 @@ transform:scale(1.05);
 }
 
 .products-item-art-image{
-    height:280px;
+    height:380px;
     width:auto;
     transition:transform 0.3s ease;
     position:relative;
@@ -171,8 +171,8 @@ transform:scale(1.05);
 
 .products-item-art-glass{
     position:absolute;
-    top:50%;
-    right:-80px;
+    top:35%;
+    right:-180px;
     transform:translateY(-50%);
     z-index:1;
     pointer-events:none;
@@ -182,11 +182,11 @@ transform:scale(1.05);
 
 .products-item-link:hover .products-item-art-glass{
     opacity:1;
-    right:-60px;
+    right:-140px;
 }
 
 .products-item-art-glass-image{
-    height:250px;
+    height:450px;
     width:auto;
     opacity:0.9;
 }
@@ -195,7 +195,7 @@ transform:scale(1.05);
 
 @media (max-width: 768px){
     .products-list{
-        gap:80px;
+        gap:250px;
     }
     
     .products-item-art-image{
@@ -203,7 +203,7 @@ transform:scale(1.05);
     }
     
     .products-item-art-glass-image{
-        height:80px;
+        height:200px;
     }
     
     .products-item-art-glass{
