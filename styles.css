@@ -250,10 +250,20 @@ body {
 
 /* Mobile carousel styles */
 @media (max-width: 768px) {
+    .featured {
+        padding: 60px 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
     .products-list {
         gap: 0;
         position: relative;
         padding: 0 60px;
+        flex: 1;
+        align-items: center;
     }
 
     .products-item {
@@ -278,11 +288,11 @@ body {
     }
 
     .products-item-art-image {
-        height: 180px;
+        height: 280px;
     }
 
     .products-item-art-glass-image {
-        height: 180px;
+        height: 280px;
     }
 }
 

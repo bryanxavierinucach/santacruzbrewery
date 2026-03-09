@@ -96,12 +96,14 @@ window.addEventListener('scroll', function() {
 </section>
 
 <script>
-// Carousel functionality for mobile
+// Carousel functionality for mobile with swipe support
 document.addEventListener('DOMContentLoaded', function(){
     const products = document.querySelectorAll('.products-item');
     const prevBtn = document.querySelector('.carousel-arrow--prev');
     const nextBtn = document.querySelector('.carousel-arrow--next');
     let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     function showProduct(index){
         products.forEach((product, i) => {
@@ -116,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(window.innerWidth <= 768 && products.length > 0){
         showProduct(currentIndex);
         
+        // Button navigation
         prevBtn.addEventListener('click', function(){
             currentIndex = (currentIndex - 1 + products.length) % products.length;
             showProduct(currentIndex);
@@ -125,6 +128,31 @@ document.addEventListener('DOMContentLoaded', function(){
             currentIndex = (currentIndex + 1) % products.length;
             showProduct(currentIndex);
         });
+        
+        // Touch swipe navigation
+        const carousel = document.querySelector('.products-list');
+        
+        carousel.addEventListener('touchstart', function(e){
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        
+        carousel.addEventListener('touchend', function(e){
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+        
+        function handleSwipe(){
+            if(touchEndX < touchStartX - 50){
+                // Swipe left - next product
+                currentIndex = (currentIndex + 1) % products.length;
+                showProduct(currentIndex);
+            }
+            if(touchEndX > touchStartX + 50){
+                // Swipe right - previous product
+                currentIndex = (currentIndex - 1 + products.length) % products.length;
+                showProduct(currentIndex);
+            }
+        }
     }
 });
 </script>
