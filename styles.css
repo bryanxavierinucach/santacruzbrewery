@@ -82,6 +82,37 @@ h1, h2, h3 {
     display: none;
 }
 
+/* HERO ART SECTION */
+
+.hero-art {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.hero-art-image {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-art-image--68825 {
+    background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjustedArtboard-2-copy.jpg?resize=828%2C1218&#038;quality=85&#038;strip=color&#038;ssl=1");
+}
+
+@media screen and (min-width: 768px) {
+    .hero-art-image--68825 {
+        background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjustedArtboard-2-copy.jpg?resize=1536%2C2260&#038;quality=85&#038;strip=color&#038;ssl=1");
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .hero-art-image--68825 {
+        background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjustedArtboard-3.jpg?resize=3072%2C1728&quality=85&strip=color&ssl=1");
+    }
+}
+
 /* HERO IMAGE */
 
 .hero {
