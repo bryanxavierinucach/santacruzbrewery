@@ -8,6 +8,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Headings font */
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+}
+
 /* HEADER */
 
 .header {
@@ -98,7 +103,7 @@ body {
 }
 
 .featured-header span {
-    font-size: 12px;
+    font-size: 20px;
     letter-spacing: 2px;
     color: #777;
     display: block;
@@ -107,8 +112,21 @@ body {
 
 .featured-header h2 {
     font-size: 60px;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: "recoleta", Georgia, "Times New Roman", serif;
     margin-bottom: 80px;
+}
+
+/* Responsive: reduce font sizes */
+@media (max-width: 768px) {
+    .featured-header span {
+        font-size: 10px;
+    }
+    
+    .featured-header h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 }
 
 /* PRODUCTS */
@@ -256,8 +274,8 @@ body {
 /* Mobile carousel styles */
 @media (max-width: 768px) {
     .featured {
-        padding: 60px 20px;
-        min-height: 100vh;
+        padding: 20px;
+        min-height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
