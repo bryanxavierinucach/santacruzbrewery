@@ -1,216 +1,297 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-font-family: Arial, sans-serif;
+body {
+    font-family: Arial, sans-serif;
 }
 
 /* HEADER */
 
-.header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-background:transparent;
-z-index:1000;
-border-bottom:1px solid rgba(255,255,255,0.4);
-transition:background 0.3s ease, border-color 0.3s ease;
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.header.scrolled{
-background:#ffffff;
-border-bottom:1px solid rgba(0,0,0,0.1);
+.header.scrolled {
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.header.scrolled .logo{
-color:#000000;
+.header.scrolled .logo {
+    color: #000000;
 }
 
-.header.scrolled .menu a{
-color:#000000;
+.header.scrolled .menu a {
+    color: #000000;
 }
 
-.header.scrolled .menu a:hover{
-color:#555555;
+.header.scrolled .menu a:hover {
+    color: #555555;
 }
 
 /* CONTENEDOR */
 
-.container{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
+.container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 /* LOGO */
 
-.logo{
-color:white;
-font-size:20px;
-font-weight:bold;
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* MENU */
 
-.menu a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-size:14px;
-font-weight:500;
-transition:opacity 0.3s;
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.3s;
 }
 
-.menu a:hover{
-opacity:0.7;
+.menu a:hover {
+    opacity: 0.7;
 }
 
 /* HERO IMAGE */
 
-.hero{
-height:100vh;
-background-image:url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjusteddesktop-PDP.jpg?resize=3072%2C1728&quality=85&strip=color&ssl=1");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-transition:opacity 0.1s ease;
+.hero {
+    height: 100vh;
+    background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjusteddesktop-PDP.jpg?resize=3072%2C1728&quality=85&strip=color&ssl=1");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.1s ease;
 }
 
 /* FEATURED SECTION */
 
-.featured{
-background:#f5f5f5;
-padding:120px 20px;
-text-align:center;
+.featured {
+    background: #f5f5f5;
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
 }
 
-.featured-header span{
-font-size:12px;
-letter-spacing:2px;
-color:#777;
-display:block;
-margin-bottom:10px;
+.featured-header span {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #777;
+    display: block;
+    margin-bottom: 10px;
 }
 
-.featured-header h2{
-font-size:60px;
-font-weight:700;
-margin-bottom:80px;
+.featured-header h2 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 80px;
 }
 
 /* PRODUCTS */
 
-.products{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:120px;
-flex-wrap:wrap;
+.products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+    flex-wrap: wrap;
 }
 
-.product img{
-height:300px;
-transition:transform 0.3s ease;
+.product img {
+    height: 300px;
+    transition: transform 0.3s ease;
 }
 
-.product img:hover{
-transform:scale(1.05);
+.product img:hover {
+    transform: scale(1.05);
 }
 
 /* PRODUCTS LIST - NEW STRUCTURE */
 
-.products-list{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:150px;
-    flex-wrap:wrap;
-    list-style:none;
-    padding:0;
-    margin:0;
+.products-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.products-item{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.products-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.products-item-link{
-    display:block;
-    text-decoration:none;
+.products-item-link {
+    display: block;
+    text-decoration: none;
 }
 
-.products-item-art{
-    position:relative;
-    margin:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.products-item-art {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.products-item-art-image{
-    height:380px;
-    width:auto;
-    transition:transform 0.3s ease;
-    position:relative;
-    z-index:2;
+.products-item-art-image {
+    height: 380px;
+    width: auto;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
-.products-item-link:hover .products-item-art-image{
-    transform:scale(1.05);
+.products-item-link:hover .products-item-art-image {
+    transform: scale(1.05);
 }
 
-.products-item-art-glass{
-    position:absolute;
-    top:35%;
-    right:-180px;
-    transform:translateY(-50%);
-    z-index:1;
-    pointer-events:none;
-    opacity:0;
-    transition:opacity 0.3s ease, right 0.3s ease;
+.products-item-art-glass {
+    position: absolute;
+    top: 35%;
+    right: -180px;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, right 0.3s ease;
 }
 
-.products-item-link:hover .products-item-art-glass{
-    opacity:1;
-    right:-140px;
+.products-item-link:hover .products-item-art-glass {
+    opacity: 1;
+    right: -140px;
 }
 
-.products-item-art-glass-image{
-    height:450px;
-    width:auto;
-    opacity:0.9;
+.products-item-art-glass-image {
+    height: 450px;
+    width: auto;
+    opacity: 0.9;
 }
 
 /* Responsive */
 
-@media (max-width: 768px){
-    .products-list{
-        gap:250px;
+@media (max-width: 768px) {
+    .products-list {
+        gap: 250px;
     }
-    
-    .products-item-art-image{
-        height:200px;
+
+    .products-item-art-image {
+        height: 200px;
     }
-    
-    .products-item-art-glass-image{
-        height:200px;
+
+    .products-item-art-glass-image {
+        height: 200px;
     }
-    
-    .products-item-art-glass{
-        right:-40px;
+
+    .products-item-art-glass {
+        right: -40px;
     }
-    
-    .products-item-link:hover .products-item-art-glass{
-        right:-30px;
+
+    .products-item-link:hover .products-item-art-glass {
+        right: -30px;
     }
+}
+
+/* CAROUSEL - Mobile */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-arrow--prev {
+    left: 10px;
+}
+
+.carousel-arrow--next {
+    right: 10px;
+}
+
+/* Mobile carousel styles */
+@media (max-width: 768px) {
+    .products-list {
+        gap: 0;
+        position: relative;
+        padding: 0 60px;
+    }
+
+    .products-item {
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .products-item.active {
+        display: flex;
+    }
+
+    .carousel-arrow {
+        display: flex;
+    }
+
+    /* Show glass image without hover on mobile */
+    .products-item-art-glass {
+        opacity: 1 !important;
+        right: -60px !important;
+        top: 40% !important;
+    }
+
+    .products-item-art-image {
+        height: 180px;
+    }
+
+    .products-item-art-glass-image {
+        height: 180px;
+    }
+}
+
+/* default */
+.products-item.active {
+    display: flex;
+}
+
+/* Desktop: show all products by default */
+.products-item.active {
+    display: flex;
 }

@@ -90,7 +90,44 @@ window.addEventListener('scroll', function() {
 
     </ul>
 
+    <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous">&#8249;</button>
+    <button class="carousel-arrow carousel-arrow--next" aria-label="Next">&#8250;</button>
+
 </section>
+
+<script>
+// Carousel functionality for mobile
+document.addEventListener('DOMContentLoaded', function(){
+    const products = document.querySelectorAll('.products-item');
+    const prevBtn = document.querySelector('.carousel-arrow--prev');
+    const nextBtn = document.querySelector('.carousel-arrow--next');
+    let currentIndex = 0;
+    
+    function showProduct(index){
+        products.forEach((product, i) => {
+            product.classList.remove('active');
+            if(i === index){
+                product.classList.add('active');
+            }
+        });
+    }
+    
+    // Only initialize carousel on mobile
+    if(window.innerWidth <= 768 && products.length > 0){
+        showProduct(currentIndex);
+        
+        prevBtn.addEventListener('click', function(){
+            currentIndex = (currentIndex - 1 + products.length) % products.length;
+            showProduct(currentIndex);
+        });
+        
+        nextBtn.addEventListener('click', function(){
+            currentIndex = (currentIndex + 1) % products.length;
+            showProduct(currentIndex);
+        });
+    }
+});
+</script>
 
 </body>
 </html>
