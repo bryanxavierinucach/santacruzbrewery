@@ -130,7 +130,7 @@ transform:scale(1.05);
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:380px;
+    gap:150px;
     flex-wrap:wrap;
     list-style:none;
     padding:0;
