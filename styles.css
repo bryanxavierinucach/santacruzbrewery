@@ -117,7 +117,8 @@ h1, h2, h3 {
 
 .hero {
     height: 100vh;
-    background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjusteddesktop-PDP.jpg?resize=3072%2C1728&quality=85&strip=color&ssl=1");
+    /* background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjusteddesktop-PDP.jpg?resize=3072%2C1728&quality=85&strip=color&ssl=1"); **/
+    background-image: url("/assets/images/portada.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
