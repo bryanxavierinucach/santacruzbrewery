@@ -4,221 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros - Santacruz Brewery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <meta name="description" content="Conoce la historia detrás de Santacruz Brewery, nuestra pasión por la cerveza artesanal y nuestras raíces en Galápagos.">
+    <!-- CSS and Fonts -->
     <link rel="stylesheet" href="styles.css">
-    <script>
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            const hero = document.querySelector('.hero-simple');
-            const scrollY = window.scrollY;
-            const heroHeight = hero.offsetHeight;
-            
-            // Calculate opacity based on scroll position
-            const opacity = 1 - (scrollY / heroHeight);
-            hero.style.opacity = Math.max(0, opacity);
-            
-            // Add scrolled class to header when past hero
-            if (scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function(){
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menu = document.querySelector('.menu');
-            
-            if(menuToggle && menu){
-                menuToggle.addEventListener('click', function(){
-                    menu.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                });
-            }
-        });
-    </script>
+    <script src="main.js" defer></script>
 </head>
-
 <body>
-
-<header class="header">
-    <div class="container">
-        <div class="logo">Santacruz Brewery</div>
-
-        <nav class="menu">
-            <a href="index.html">Inicio</a>
-            <a href="sobre-nosotros.html">Nosotros</a>
-            <a href="tienda.html">Tienda</a>
-            <a href="#">Restaurante</a>
-            <a href="#">Planta</a>
-            <a href="contacto.html">Contacto</a>
-        </nav>
-
-        <button class="menu-toggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<section class="hero-simple hero-about">
-    <div class="hero-simple-content">
-        <span class="hero-subtitle">Nuestra Historia</span>
-        <h1>Sobre Nosotros</h1>
-    </div>
-</section>
-
-<section class="about-intro">
-    <div class="about-container">
-        <div class="about-text">
-            <h2>Nuestra historia</h2>
-            <p style="text-align: justify;">En 2012 elaboramos la primera cerveza en Galápagos como cerveceros caseros (HomeBrewers). Ese año nació nuestro proyecto, impulsados por familiares y amigos que probaron nuestros primeros “experimentos” y nos motivaron a formalizar la idea: crear una cerveza 100% hecha en Galápagos.</p>
-            <p style="text-align: justify;">Nuestra fábrica de cerveza es más que un negocio; es un sueño compartida por un equipo de entusiastas dedicados a perfeccionar el arte de la cervecería. Cada lote que elaboramos es una expresión de nuestra pasión por la innovación y el respeto por las tradiciones cerveceras.</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="header__logo">Santacruz <span>Brewery</span></a>
+            <nav class="header__menu">
+                <a href="index.html" class="header__link">Inicio</a>
+                <a href="sobre-nosotros.html" class="header__link is-active">Nosotros</a>
+                <a href="tienda.html" class="header__link">Tienda</a>
+                <a href="contacto.html" class="header__link">Contacto</a>
+            </nav>
+            <button class="header__toggle" aria-label="Abrir Menú">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <div class="about-image">
-            <img src="https://santacruzbrewery.ec/wp-content/uploads/2025/04/Diseno-sin-titulo-700x700.png" alt="Nuestra Cervecería">
-        </div>
-    </div>
-</section>
+    </header>
 
-<section class="about-mision-vision">
-    <div class="mv-container">
-        <div class="mv-grid">
-            <div class="mv-card mv-mision">
-                <span class="mv-label">Nuestra Misión</span>
-                <h3>Crear cervezas artesanales de la más alta calidad que celebren la tradición cervecera, inspiren momentos de conexión y promuevan el orgullo por nuestra cultura local.</h3>
+    <main>
+        <!-- Hero Simple -->
+        <section class="hero hero--simple">
+            <div class="hero__overlay"></div>
+            <!-- Missing a specific bg for about, so using fallback gradient defined in CSS -->
+            <div class="hero__content">
+                <span class="hero__subtitle">Nuestra Historia</span>
+                <h1 class="hero__title">Sobre Nosotros</h1>
             </div>
-            <div class="mv-card mv-vision">
-                <span class="mv-label">Nuestra Visión</span>
-                <h3>Ser reconocidos como un referente en el mundo cervecero, llevando la experiencia de Santa Cruz Brewery a cada rincón, destacando por nuestra pasión, innovación y compromiso con la excelencia.</h3>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section class="about-values">
-    <div class="values-container">
-        <div class="values-header">
-            <h2>Nuestros Valores</h2>
-            <p>Los principios que guían cada decisión que tomamos</p>
-        </div>
-        
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-icon">🍺</div>
-                <h3>Calidad</h3>
-                <p>Solo utilizamos ingredientes premium y procesos rigurosos para garantizar que cada cerveza cumpla con los más altos estándares de excelencia.</p>
-            </div>
-            
-            <div class="value-card">
-                <div class="value-icon">🌱</div>
-                <h3>Sostenibilidad</h3>
-                <p>Nos comprometemos con prácticas sostenibles que protegen el medio ambiente único de Galápagos, nuestra casa y fuente de inspiración.</p>
-            </div>
-            
-            <div class="value-card">
-                <div class="value-icon">💚</div>
-                <h3>Comunidad</h3>
-                <p>Creemos en fortalecer nuestra comunidad local, creando empleos dignos y apoyando a productores locales siempre que es posible.</p>
-            </div>
-            
-            <div class="value-card">
-                <div class="value-icon">✨</div>
-                <h3>Innovación</h3>
-                <p>Constantemente experimentamos con nuevos estilos y sabores, sin perder de vista las técnicas clásicas que hacen grande a la cerveza.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <!-- Intro -->
+        <section class="about section">
+            <div class="container">
+                <div class="about__grid">
+                    <div class="about__text">
+                        <h2>Nuestra historia</h2>
+                        <p>En 2012 elaboramos la primera cerveza en Galápagos como cerveceros caseros (HomeBrewers). Ese año nació nuestro proyecto, impulsados por familiares y amigos que probaron nuestros primeros "experimentos" y nos motivaron a formalizar la idea: crear una cerveza 100% hecha en Galápagos.</p>
+                        <p>Nuestra fábrica de cerveza es más que un negocio; es un sueño compartida por un equipo de entusiastas dedicados a perfeccionar el arte de la cervecería. Cada lote que elaboramos es una expresión de nuestra pasión por la innovación y el respeto por las tradiciones cerveceras.</p>
+                    </div>
+                    <div class="about__image">
+                        <img src="https://santacruzbrewery.ec/wp-content/uploads/2025/04/Diseno-sin-titulo-700x700.png" alt="Nuestra Cervecería" loading="lazy">
+                    </div>
+                </div>
 
-<section class="about-process">
-    <div class="process-container">
-        <div class="process-header">
-            <h2>Nuestro Proceso</h2>
-            <p>De la ingredients a tu vaso</p>
-        </div>
-        
-        <div class="process-timeline">
-            <div class="process-step">
-                <div class="step-number">01</div>
-                <h3>Selección de Ingredientes</h3>
-                <p>Elegimos cuidadosamente cada ingrediente: maltas de primera calidad, lúpulos selectos y levaduras propias.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">02</div>
-                <h3>Molienda y Mash</h3>
-                <p>Los granos se muelen justo antes del cocido para preservar sus sabores y aromas naturales.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">03</div>
-                <h3>Cocido y Lupulado</h3>
-                <p>Nuestro maestro cervecero controla cada变量的 para lograr el equilibrio perfecto de sabores.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">04</div>
-                <h3>Fermentación</h3>
-                <p>La fermentación lenta a temperatura controlada permite desarrollar sabores complejos y auténticos.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">05</div>
-                <h3>Embotellado</h3>
-                <p>Cada botella se llena con el mayor cuidado para preservar la frescura y carbonatación natural.</p>
-            </div>
-        </div>
-    </div>
-</section>
+                <!-- Misión y Visión -->
+                <div class="mv__grid">
+                    <div class="mv__card">
+                        <span class="mv__label">Nuestra Misión</span>
+                        <h3>Crear cervezas artesanales de la más alta calidad que celebren la tradición cervecera, inspiren momentos de conexión y promuevan el orgullo por nuestra cultura local.</h3>
+                    </div>
+                    <div class="mv__card">
+                        <span class="mv__label">Nuestra Visión</span>
+                        <h3>Ser reconocidos como un referente en el mundo cervecero, llevando la experiencia de Santa Cruz Brewery a cada rincón, destacando por nuestra pasión, innovación y compromiso con la excelencia.</h3>
+                    </div>
+                </div>
 
-<section class="about-cta">
-    <div class="cta-container">
-        <h2>¿Quieres conocernos?</h2>
-        <p>Visítanos en nuestra fábrica o contáctanos para una visita guiada</p>
-        <a href="contacto.html" class="btn-cta">Contáctanos</a>
-    </div>
-</section>
+                <!-- Valores -->
+                <div class="section-header" style="margin-top: 120px; text-align: center;">
+                    <span class="section-header__subtitle">Nuestros Valores</span>
+                    <h2 class="section-header__title">Nuestros Pilares</h2>
+                </div>
+                <div class="values__grid">
+                    <div class="value__card">
+                        <div class="value__icon">🍺</div>
+                        <h3>Calidad</h3>
+                        <p>Solo utilizamos ingredientes premium y procesos rigurosos para garantizar que cada cerveza cumpla con los más altos estándares de excelencia.</p>
+                    </div>
+                    <div class="value__card">
+                        <div class="value__icon">🌱</div>
+                        <h3>Sostenibilidad</h3>
+                        <p>Nos comprometemos con prácticas sostenibles que protegen el medio ambiente único de Galápagos, nuestra casa y fuente de inspiración.</p>
+                    </div>
+                    <div class="value__card">
+                        <div class="value__icon">💚</div>
+                        <h3>Comunidad</h3>
+                        <p>Creemos en fortalecer nuestra comunidad local, creando empleos dignos y apoyando a productores locales siempre que es posible.</p>
+                    </div>
+                    <div class="value__card">
+                        <div class="value__icon">✨</div>
+                        <h3>Innovación</h3>
+                        <p>Constantemente experimentamos con nuevos estilos y sabores, sin perder de vista las técnicas clásicas que hacen grande a la cerveza.</p>
+                    </div>
+                </div>
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-brand">
-            <h3>Santacruz Brewery</h3>
-            <p>Cervezas artesanales de calidad premium</p>
-        </div>
-        <div class="footer-links">
-            <h4>Enlaces</h4>
-            <ul>
-                <li><a href="index.html">Nuestras Cervezas</a></li>
-                <li><a href="#">Historias</a></li>
-                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="#">Ubicaciones</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </div>
-        <div class="footer-contact">
-            <h4>Contacto</h4>
-            <ul>
-                <li>📍 Santa Cruz, Ecuador</li>
-                <li>📞 +593 99 123 4567</li>
-                <li>✉️ info@santacruzbrewery.com</li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <h4>Síguenos</h4>
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/></svg></a>
-                <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.95,4.57a10,10,0,0,1-2.82.77,4.96,4.96,0,0,0,2.16-2.72,9.9,9.9,0,0,1-3.12,1.19,4.92,4.92,0,0,0-8.39,4.88A14,14,0,0,1,1.64,3.16,4.92,4.92,0,0,0,3.2,9.72,4.86,4.86,0,0,1,.96,9.11v.06a4.93,4.93,0,0,0,3.95,4.83,4.86,4.86,0,0,1-2.22.08,4.93,4.93,0,0,0,4.6,3.42A9.87,9.87,0,0,1,0,19.54a13.94,13.94,0,0,0,7.55,2.21A13.9,13.9,0,0,0,21.56,7.67c0-.21,0-.42,0-.63A10,10,0,0,0,24,4.59Z"/></svg></a>
+                <!-- Proceso -->
+                <div class="section-header" style="margin-top: 120px;">
+                    <span class="section-header__subtitle">Nuestro Proceso</span>
+                    <h2 class="section-header__title">De la semilla al vaso</h2>
+                </div>
+                <!-- Timeline Structure -->
+                <div style="max-width: 600px;">
+                    <div class="process__step">
+                        <div class="process__number">1</div>
+                        <h3>Selección de Ingredientes</h3>
+                        <p>Elegimos cuidadosamente cada ingrediente: maltas de primera calidad, lúpulos selectos y levaduras propias.</p>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__number">2</div>
+                        <h3>Molienda y Mash</h3>
+                        <p>Los granos se muelen justo antes del cocido para preservar sus sabores y aromas naturales.</p>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__number">3</div>
+                        <h3>Cocido y Lupulado</h3>
+                        <p>Nuestro maestro cervecero controla cada variable para lograr el equilibrio perfecto de sabores.</p>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__number">4</div>
+                        <h3>Fermentación</h3>
+                        <p>La fermentación lenta a temperatura controlada permite desarrollar sabores complejos y auténticos.</p>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__number">5</div>
+                        <h3>Embotellado</h3>
+                        <p>Cada botella se llena con el mayor cuidado para preservar la frescura y carbonatación natural.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="hero hero--simple" style="min-height: 40vh; display:flex;">
+            <div class="hero__content" style="text-align: center; margin: auto;">
+                <span class="hero__subtitle">Ven y conócenos</span>
+                <h2 class="hero__title" style="font-size: 3rem; margin-bottom: 32px;">¿Quieres conocernos?</h2>
+                <p style="color:var(--color-text-muted); margin-bottom: 32px; font-size:1.1rem;">Visítanos en nuestra fábrica o contáctanos para una visita guiada</p>
+                <a href="contacto.html" class="btn">Contáctanos</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h3>Santacruz <span>Brewery</span></h3>
+                    <p>Orgullosamente elaborada en las Islas Galápagos. Cerveza artesanal de calidad premium con pasión y dedicación.</p>
+                </div>
+                <div class="footer__links">
+                    <h4 class="footer__title">Enlaces</h4>
+                    <ul class="footer__list">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4 class="footer__title">Contacto</h4>
+                    <ul class="footer__list">
+                        <li>📍 Santa Cruz, Galápagos, Ecuador</li>
+                        <li>📞 +593 99 123 4567</li>
+                        <li>✉️ info@santacruzbrewery.com</li>
+                    </ul>
+                </div>
+                <div class="footer__socials">
+                    <h4 class="footer__title">Síguenos</h4>
+                    <div class="footer__social">
+                        <a href="https://facebook.com" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/></svg></a>
+                        <a href="https://instagram.com" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.95,4.57a10,10,0,0,1-2.82.77,4.96,4.96,0,0,0,2.16-2.72,9.9,9.9,0,0,1-3.12,1.19,4.92,4.92,0,0,0-8.39,4.88A14,14,0,0,1,1.64,3.16,4.92,4.92,0,0,0,3.2,9.72,4.86,4.86,0,0,1,.96,9.11v.06a4.93,4.93,0,0,0,3.95,4.83,4.86,4.86,0,0,1-2.22.08,4.93,4.93,0,0,0,4.6,3.42A9.87,9.87,0,0,1,0,19.54a13.94,13.94,0,0,0,7.55,2.21A13.9,13.9,0,0,0,21.56,7.67c0-.21,0-.42,0-.63A10,10,0,0,0,24,4.59Z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Santacruz Brewery. Todos los derechos reservados.</p>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Santacruz Brewery. Todos los derechos reservados.</p>
-    </div>
-</footer>
-
+    </footer>
 </body>
 </html>
