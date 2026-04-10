@@ -158,6 +158,14 @@
         <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous">&#8249;</button>
         <button class="carousel-arrow carousel-arrow--next" aria-label="Next">&#8250;</button>
 
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
     </section>
 
     <section class="hero-art">
@@ -226,6 +234,8 @@
             let touchStartX = 0;
             let touchEndX = 0;
 
+            const dots = document.querySelectorAll('.dot');
+
             function showProduct(index) {
                 products.forEach((product, i) => {
                     product.classList.remove('active');
@@ -233,6 +243,15 @@
                         product.classList.add('active');
                     }
                 });
+                
+                if (dots.length > 0) {
+                    dots.forEach((dot, i) => {
+                        dot.classList.remove('active');
+                        if (i === index) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
             }
 
             // Only initialize carousel on mobile

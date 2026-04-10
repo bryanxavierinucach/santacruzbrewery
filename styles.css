@@ -189,36 +189,39 @@ h3 {
 /* FEATURED SECTION */
 
 .featured {
-    background: #f5f5f5;
-    padding: 120px 20px;
+    background: #ffffff;
+    padding: 80px 20px;
     text-align: center;
     position: relative;
 }
 
 .featured-header span {
-    font-size: 20px;
-    letter-spacing: 2px;
-    color: #777;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .featured-header h2 {
     font-size: 60px;
-    font-weight: 600;
-    font-family: "recoleta", Georgia, "Times New Roman", serif;
-    margin-bottom: 80px;
+    font-weight: 900;
+    font-family: 'Fraunces', serif;
+    margin-bottom: 60px;
+    color: #000;
 }
 
 /* Responsive: reduce font sizes */
 @media (max-width: 768px) {
     .featured-header span {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .featured-header h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
+        font-size: 40px;
+        margin-bottom: 30px;
     }
 }
 
@@ -338,23 +341,24 @@ h3 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 24px;
-    width: 36px;
-    height: 36px;
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #cccccc;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
     display: none;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .carousel-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: #f5f5f5;
+    border-color: #333333;
 }
 
 .carousel-arrow--prev {
@@ -365,21 +369,46 @@ h3 {
     right: 10px;
 }
 
+/* Carousel Dots */
+.carousel-dots {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #bbbbbb;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-dots .dot.active {
+    background: #000000;
+    width: 24px;
+    border-radius: 4px;
+}
+
 /* Mobile carousel styles */
 @media (max-width: 768px) {
     .featured {
-        padding: 20px;
+        padding: 60px 20px 40px 20px;
         min-height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        background: #ffffff;
     }
 
     .products-list {
         gap: 0;
         position: relative;
-        padding: 0 60px;
-        flex: 1;
+        padding: 0 40px;
         align-items: center;
     }
 
@@ -397,19 +426,31 @@ h3 {
         display: flex;
     }
 
-    /* Show glass image without hover on mobile */
+    .carousel-dots {
+        display: flex;
+    }
+
+    /* Shift the container slightly to the left to perfectly center the bottle+glass group visually */
+    .products-item-art {
+        transform: translateX(-15px);
+    }
+
+    /* Anchor the glass proportionally next to the bottle */
     .products-item-art-glass {
         opacity: 1 !important;
-        right: -60px !important;
-        top: 40% !important;
+        right: -75px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 1; /* Keep it securely behind the bottle */
     }
 
     .products-item-art-image {
-        height: 280px;
+        height: 320px;
+        z-index: 2; /* Bottle stays in front */
     }
 
     .products-item-art-glass-image {
-        height: 280px;
+        height: 290px;
     }
 }
 
