@@ -261,7 +261,8 @@ h1, h2, h3 {
 .products-item-art-glass-image {
     height: 450px;
     width: auto;
-    opacity: 0.9;
+    opacity: 0.95;
+    filter: contrast(135%) saturate(115%);
 }
 
 /* Responsive */
