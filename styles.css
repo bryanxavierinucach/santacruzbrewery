@@ -92,24 +92,24 @@ h1, h2, h3 {
 .hero-art-image {
     width: 100%;
     height: 100vh;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .hero-art-image--68825 {
-    background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjustedArtboard-2-copy.jpg?resize=828%2C1218&#038;quality=85&#038;strip=color&#038;ssl=1");
+    background-image: url("assets/images/Todas.png");
 }
 
 @media screen and (min-width: 768px) {
     .hero-art-image--68825 {
-        background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjustedArtboard-2-copy.jpg?resize=1536%2C2260&#038;quality=85&#038;strip=color&#038;ssl=1");
+        background-image: url("assets/images/Todas.png");
     }
 }
 
 @media screen and (min-width: 1024px) {
     .hero-art-image--68825 {
-        background-image: url("https://i0.wp.com/www.firestonewalker.com/wp-content/uploads/2026/01/adjustedArtboard-3.jpg?resize=3072%2C1728&quality=85&strip=color&ssl=1");
+        background-image: url("assets/images/Todas.png");
     }
 }
 
@@ -123,6 +123,23 @@ h1, h2, h3 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo {
+    width: 500px;
+    max-width: 80%;
+    animation: floatLogo 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5));
+    z-index: 2;
+}
+
+@keyframes floatLogo {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
 }
 
 /* FEATURED SECTION */
