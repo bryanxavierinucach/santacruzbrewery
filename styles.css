@@ -65,17 +65,23 @@ h3 {
 }
 
 .logo-img {
-    height: 70px;
+    height: 90px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    filter: brightness(1.1);
 }
 
 .logo-img:hover {
     transform: scale(1.04);
     opacity: 0.85;
 }
+
+/* Logo swap: dark header → white logo, scrolled (white) header → color logo */
+.logo-img--dark   { display: block; }   /* firstwhite.png - visible on dark header */
+.logo-img--light  { display: none;  }   /* First.png      - hidden on dark header  */
+
+.header.scrolled .logo-img--dark  { display: none;  }
+.header.scrolled .logo-img--light { display: block; }
 
 /* Menu */
 
