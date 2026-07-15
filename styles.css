@@ -80,7 +80,7 @@ h6 {
 }
 
 .logo-img {
-    height: 90px;
+    height: 70px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -92,11 +92,24 @@ h6 {
 }
 
 /* Logo swap: dark header → white logo, scrolled (white) header → color logo */
-.logo-img--dark   { display: block; }   /* firstwhite.png - visible on dark header */
-.logo-img--light  { display: none;  }   /* First.png      - hidden on dark header  */
+.logo-img--dark {
+    display: block;
+}
 
-.header.scrolled .logo-img--dark  { display: none;  }
-.header.scrolled .logo-img--light { display: block; }
+/* firstwhite.png - visible on dark header */
+.logo-img--light {
+    display: none;
+}
+
+/* First.png      - hidden on dark header  */
+
+.header.scrolled .logo-img--dark {
+    display: none;
+}
+
+.header.scrolled .logo-img--light {
+    display: block;
+}
 
 /* Menu */
 
@@ -200,6 +213,7 @@ h6 {
     .hero-art-image {
         height: 70vh;
     }
+
     .hero-art-content {
         padding: 80px 40px 20px;
     }
@@ -211,9 +225,11 @@ h6 {
         display: grid;
         grid-template-rows: auto 1fr;
     }
+
     .hero-art-image {
         height: 88vh;
     }
+
     .hero-art-content {
         padding: 90px 60px 0;
     }
@@ -515,12 +531,14 @@ h6 {
         right: -75px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
-        z-index: 1; /* Keep it securely behind the bottle */
+        z-index: 1;
+        /* Keep it securely behind the bottle */
     }
 
     .products-item-art-image {
         height: 320px;
-        z-index: 2; /* Bottle stays in front */
+        z-index: 2;
+        /* Bottle stays in front */
     }
 
     .products-item-art-glass-image {
@@ -540,6 +558,10 @@ h6 {
 
 /* Menu Responsive */
 @media (max-width: 768px) {
+    .logo-img {
+        height: 90px;
+    }
+
     .container {
         padding: 15px;
     }
@@ -699,6 +721,11 @@ h6 {
     font-size: 14px;
     color: #999;
     line-height: 1.6;
+}
+
+.footer-logo {
+    height: 100px;
+    margin-bottom: 12px;
 }
 
 .footer-links h4,
