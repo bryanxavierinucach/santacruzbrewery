@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda - Santa Cruz Brewery</title>
+    <title>Tienda y carrito - Santa Cruz Brewery</title>
+    <meta name="description"
+        content="Explora las cervezas especiales y la indumentaria de Santa Cruz Brewery, arma tu carrito y solicita tu pedido.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -38,7 +40,44 @@
             }
 
             const filterButtons = document.querySelectorAll('.filter-btn');
-            const productCards = document.querySelectorAll('.product-card');
+            const productCards = [...document.querySelectorAll('.product-card')];
+            const cartLauncher = document.querySelector('.shop-cart-launcher');
+            const cartDrawer = document.querySelector('.cart-drawer');
+            const cartOverlay = document.querySelector('.cart-overlay');
+            const cartItems = document.querySelector('.cart-items');
+            const cartEmpty = document.querySelector('.cart-empty');
+            const cartCount = document.querySelectorAll('[data-cart-count]');
+            const cartSubtotal = document.querySelector('[data-cart-subtotal]');
+            const checkoutButton = document.querySelector('.cart-checkout-button');
+            const checkoutSection = document.querySelector('.checkout-section');
+            const checkoutItems = document.querySelector('.checkout-items');
+            const checkoutSubtotal = document.querySelector('[data-checkout-subtotal]');
+            const orderForm = document.querySelector('.order-request-form');
+            const orderStatus = document.querySelector('.order-form-status');
+            const submitButton = document.querySelector('.order-submit');
+            const paymentOptions = document.querySelectorAll('input[name="forma_pago"]');
+            const bankTransferDetails = document.querySelector('.bank-transfer-details');
+            const cashDeliveryDetails = document.querySelector('.cash-delivery-details');
+            const CART_KEY = 'santa-cruz-brewery-cart-v1';
+            const currency = new Intl.NumberFormat('es-EC', { style: 'currency', currency: 'USD' });
+
+            const products = new Map(productCards.map((card) => [card.dataset.id, {
+                id: card.dataset.id,
+                name: card.dataset.name,
+                price: Number(card.dataset.price),
+                image: card.dataset.image
+            }]));
+
+            let cart = [];
+
+            try {
+                const savedCart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+                cart = Array.isArray(savedCart)
+                    ? savedCart.filter((item) => products.has(item.id) && Number.isInteger(item.quantity) && item.quantity > 0)
+                    : [];
+            } catch (error) {
+                cart = [];
+            }
 
             filterButtons.forEach((button) => {
                 button.addEventListener('click', function () {
@@ -48,11 +87,256 @@
                     button.classList.add('active');
 
                     productCards.forEach((card) => {
-                        card.hidden = selectedCategory !== 'todos'
+                        card.hidden = selectedCategory !== 'todo'
                             && card.dataset.category !== selectedCategory;
                     });
                 });
             });
+
+            function productForItem(item) {
+                const product = products.get(item.id);
+                if (!product) return null;
+                return {
+                    ...product,
+                    key: item.variant ? `${item.id}:${item.variant}` : item.id,
+                    label: item.variant ? `${product.name} · Talla ${item.variant}` : product.name
+                };
+            }
+
+            function saveCart() {
+                localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            }
+
+            function totalUnits() {
+                return cart.reduce((total, item) => total + item.quantity, 0);
+            }
+
+            function subtotal() {
+                return cart.reduce((total, item) => {
+                    const product = products.get(item.id);
+                    return total + (product ? product.price * item.quantity : 0);
+                }, 0);
+            }
+
+            function createQuantityControl(item, product) {
+                const control = document.createElement('div');
+                control.className = 'cart-quantity';
+                control.setAttribute('aria-label', `Cantidad de ${product.label}`);
+
+                const minus = document.createElement('button');
+                minus.type = 'button';
+                minus.dataset.cartAction = 'decrease';
+                minus.dataset.key = product.key;
+                minus.setAttribute('aria-label', `Quitar una unidad de ${product.label}`);
+                minus.textContent = '−';
+
+                const amount = document.createElement('span');
+                amount.textContent = item.quantity;
+                amount.setAttribute('aria-live', 'polite');
+
+                const plus = document.createElement('button');
+                plus.type = 'button';
+                plus.dataset.cartAction = 'increase';
+                plus.dataset.key = product.key;
+                plus.setAttribute('aria-label', `Añadir una unidad de ${product.label}`);
+                plus.textContent = '+';
+
+                control.append(minus, amount, plus);
+                return control;
+            }
+
+            function renderCart() {
+                const units = totalUnits();
+                if (cart.length === 0) {
+                    checkoutSection.hidden = true;
+                }
+                cartCount.forEach((element) => { element.textContent = units; });
+                cartSubtotal.textContent = currency.format(subtotal());
+                cartItems.replaceChildren();
+                checkoutItems.replaceChildren();
+                cartEmpty.hidden = cart.length > 0;
+                checkoutButton.disabled = cart.length === 0;
+
+                cart.forEach((item) => {
+                    const product = productForItem(item);
+                    if (!product) return;
+
+                    const row = document.createElement('article');
+                    row.className = 'cart-item';
+
+                    const img = document.createElement('img');
+                    img.src = product.image;
+                    img.alt = '';
+
+                    const info = document.createElement('div');
+                    info.className = 'cart-item-info';
+                    const name = document.createElement('h3');
+                    name.textContent = product.label;
+                    const price = document.createElement('p');
+                    price.textContent = `${currency.format(product.price)} c/u`;
+                    info.append(name, price, createQuantityControl(item, product));
+
+                    const remove = document.createElement('button');
+                    remove.type = 'button';
+                    remove.className = 'cart-remove';
+                    remove.dataset.cartAction = 'remove';
+                    remove.dataset.key = product.key;
+                    remove.setAttribute('aria-label', `Eliminar ${product.label} del carrito`);
+                    remove.textContent = '×';
+                    row.append(img, info, remove);
+                    cartItems.append(row);
+
+                    const summaryRow = document.createElement('div');
+                    summaryRow.className = 'checkout-item';
+                    const summaryProduct = document.createElement('div');
+                    const summaryName = document.createElement('strong');
+                    summaryName.textContent = product.label;
+                    const summaryQty = document.createElement('span');
+                    summaryQty.textContent = ` × ${item.quantity}`;
+                    summaryProduct.append(summaryName, summaryQty);
+                    const summaryPrice = document.createElement('strong');
+                    summaryPrice.textContent = currency.format(product.price * item.quantity);
+                    summaryRow.append(summaryProduct, summaryPrice);
+                    checkoutItems.append(summaryRow);
+                });
+
+                checkoutSubtotal.textContent = currency.format(subtotal());
+            }
+
+            function openCart() {
+                cartDrawer.classList.add('is-open');
+                cartOverlay.classList.add('is-open');
+                cartDrawer.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('cart-open');
+                document.querySelector('.cart-close').focus();
+            }
+
+            function closeCart() {
+                cartDrawer.classList.remove('is-open');
+                cartOverlay.classList.remove('is-open');
+                cartDrawer.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('cart-open');
+            }
+
+            function addProduct(card) {
+                const option = card.querySelector('.product-option');
+                const variant = option ? option.value : '';
+                const existing = cart.find((item) => item.id === card.dataset.id && item.variant === variant);
+                if (existing) {
+                    existing.quantity += 1;
+                } else {
+                    cart.push({ id: card.dataset.id, variant, quantity: 1 });
+                }
+                saveCart();
+                renderCart();
+                openCart();
+            }
+
+            document.querySelectorAll('.btn-add-cart').forEach((button) => {
+                button.addEventListener('click', () => addProduct(button.closest('.product-card')));
+            });
+
+            cartLauncher.addEventListener('click', openCart);
+            document.querySelector('.cart-close').addEventListener('click', closeCart);
+            cartOverlay.addEventListener('click', closeCart);
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && cartDrawer.classList.contains('is-open')) closeCart();
+            });
+
+            cartItems.addEventListener('click', (event) => {
+                const button = event.target.closest('[data-cart-action]');
+                if (!button) return;
+                const [id, variant = ''] = button.dataset.key.split(':');
+                const item = cart.find((entry) => entry.id === id && entry.variant === variant);
+                if (!item) return;
+
+                if (button.dataset.cartAction === 'increase') item.quantity += 1;
+                if (button.dataset.cartAction === 'decrease') item.quantity -= 1;
+                if (button.dataset.cartAction === 'remove' || item.quantity < 1) {
+                    cart = cart.filter((entry) => entry !== item);
+                }
+                saveCart();
+                renderCart();
+            });
+
+            checkoutButton.addEventListener('click', () => {
+                closeCart();
+                checkoutSection.hidden = false;
+                checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelector('#order-name').focus({ preventScroll: true });
+            });
+
+            paymentOptions.forEach((option) => {
+                option.addEventListener('change', () => {
+                    bankTransferDetails.hidden = option.value !== 'transferencia';
+                    cashDeliveryDetails.hidden = option.value !== 'contra_entrega';
+                });
+            });
+
+            orderForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                if (!cart.length) {
+                    orderStatus.textContent = 'Agrega al menos un producto antes de enviar tu solicitud.';
+                    orderStatus.dataset.state = 'error';
+                    orderStatus.hidden = false;
+                    return;
+                }
+                if (!orderForm.reportValidity()) return;
+
+                const orderLines = cart.map((item) => {
+                    const product = productForItem(item);
+                    return `${product.label} × ${item.quantity} — ${currency.format(product.price * item.quantity)}`;
+                });
+                const data = new FormData(orderForm);
+                const payload = {
+                    nombre: `${data.get('nombre')} ${data.get('apellidos')}`,
+                    email: data.get('email'),
+                    telefono: data.get('telefono'),
+                    ubicacion: `${data.get('ciudad')}, ${data.get('provincia')}, Ecuador`,
+                    direccion: data.get('direccion') || 'Por coordinar',
+                    notas: data.get('notas') || 'Sin notas adicionales',
+                    forma_de_pago: data.get('forma_pago') === 'transferencia'
+                        ? 'Transferencia bancaria directa'
+                        : 'Contra entrega',
+                    pedido_solicitado: orderLines.join('\n'),
+                    subtotal_referencial: currency.format(subtotal()),
+                    _subject: `Nueva solicitud de tienda — ${data.get('nombre')} ${data.get('apellidos')}`,
+                    _template: 'table',
+                    _honey: data.get('_honey')
+                };
+
+                submitButton.disabled = true;
+                submitButton.querySelector('span').textContent = 'Enviando solicitud...';
+                orderStatus.hidden = true;
+
+                try {
+                    const response = await fetch('https://formsubmit.co/ajax/info@santacruzbrewery.com', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (!response.ok || result.success === false) throw new Error('No se pudo enviar');
+
+                    orderForm.reset();
+                    bankTransferDetails.hidden = false;
+                    cashDeliveryDetails.hidden = true;
+                    cart = [];
+                    saveCart();
+                    renderCart();
+                    orderStatus.textContent = '¡Solicitud enviada! Te contactaremos para confirmar disponibilidad, entrega y total final.';
+                    orderStatus.dataset.state = 'success';
+                } catch (error) {
+                    orderStatus.textContent = 'No pudimos enviar la solicitud. Inténtalo nuevamente o escríbenos por WhatsApp.';
+                    orderStatus.dataset.state = 'error';
+                } finally {
+                    orderStatus.hidden = false;
+                    submitButton.disabled = false;
+                    submitButton.querySelector('span').textContent = 'Solicitar pedido';
+                }
+            });
+
+            renderCart();
         });
     </script>
 </head>
@@ -86,125 +370,293 @@
 
     <section class="hero-simple hero-shop">
         <div class="hero-simple-content">
-            <span class="hero-subtitle">Nuestra Tienda</span>
-            <h1>Comprar Cervezas</h1>
+            <span class="hero-subtitle">De Galápagos para ti</span>
+            <h1>Arma tu pedido</h1>
+            <p>Elige tus favoritos, ajusta las cantidades y solicita disponibilidad en pocos pasos.</p>
         </div>
     </section>
+
+    <button class="shop-cart-launcher" type="button" aria-label="Abrir carrito de compra">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="20" r="1"></circle>
+            <circle cx="19" cy="20" r="1"></circle>
+            <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H6"></path>
+        </svg>
+        <span>Carrito</span>
+        <strong data-cart-count>0</strong>
+    </button>
 
     <section class="shop-filters">
         <div class="filters-container">
             <div class="filter-group">
-                <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
-                <button class="filter-btn" type="button" data-filter="ipa">IPA</button>
-                <button class="filter-btn" type="button" data-filter="porter">Porter</button>
-                <button class="filter-btn" type="button" data-filter="red-ale">Red Ale</button>
-                <button class="filter-btn" type="button" data-filter="especiales">Especiales</button>
+                <button class="filter-btn active" type="button" data-filter="todo">Todos</button>
+                <button class="filter-btn" type="button" data-filter="cervezas">Cervezas</button>
+                <button class="filter-btn" type="button" data-filter="indumentaria">Indumentaria</button>
             </div>
         </div>
     </section>
 
     <section class="shop-products">
+        <div class="shop-intro">
+            <div>
+                <span class="shop-kicker">Selección Santa Cruz</span>
+                <h2>Productos con identidad de Galápagos</h2>
+            </div>
+            <p>Los valores mostrados son referenciales. Confirmaremos contigo la disponibilidad, el envío y el total
+                final antes de procesar el pedido.</p>
+        </div>
         <div class="products-grid">
 
-            <div class="product-card" data-category="ipa">
+            <article class="product-card" data-category="cervezas" data-id="hammerhead-ipa"
+                data-name="Hammerhead IPA" data-price="5" data-image="assets/images/ipabotella.png">
                 <div class="product-image">
-                    <img src="assets/images/ipabotella.png" alt="IPA">
+                    <img src="assets/images/ipabotella.png" alt="Botella de cerveza Hammerhead IPA">
                     <span class="product-badge">Más Vendido</span>
                 </div>
                 <div class="product-info">
-                    <h3>IPA</h3>
-                    <p class="product-style">India Pale Ale</p>
-                    <p class="product-desc">Cerveza intensa con aroma a lúpulos florales y un amargor característico.
-                    </p>
+                    <h3>Hammerhead IPA</h3>
+                    <p class="product-style">Hazy IPA</p>
+                    <p class="product-desc">Turbia, jugosa y aromática, con intensos perfiles frutales.</p>
                     <div class="product-price">
                         <span class="price">$5.00</span>
                         <span class="price-unit">x unidad</span>
                     </div>
-                    <button class="btn-add-cart" type="button">Agregar al Carrito</button>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
                 </div>
-            </div>
+            </article>
 
-            <div class="product-card" data-category="porter">
+            <article class="product-card" data-category="cervezas" data-id="carapachupa-porter"
+                data-name="Carapachupa Porter" data-price="5" data-image="assets/images/poterbotella.png">
                 <div class="product-image">
-                    <img src="assets/images/poterbotella.png" alt="Porter">
+                    <img src="assets/images/poterbotella.png" alt="Botella de cerveza Carapachupa Porter">
                 </div>
                 <div class="product-info">
-                    <h3>Porter</h3>
-                    <p class="product-style">Dark Ale</p>
-                    <p class="product-desc">Cerveza oscura con notas a chocolate, caramelo tostado y café.</p>
+                    <h3>Carapachupa</h3>
+                    <p class="product-style">Porter</p>
+                    <p class="product-desc">Oscura, con sabores a chocolate y café, cuerpo medio y perfil equilibrado.</p>
                     <div class="product-price">
-                        <span class="price">$4.50</span>
+                        <span class="price">$5.00</span>
                         <span class="price-unit">x unidad</span>
                     </div>
-                    <button class="btn-add-cart" type="button">Agregar al Carrito</button>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
                 </div>
-            </div>
+            </article>
 
-            <div class="product-card" data-category="red-ale">
+            <article class="product-card" data-category="cervezas" data-id="colorada-red-ale"
+                data-name="Colorada Red Ale" data-price="5" data-image="assets/images/redalebotella.png">
                 <div class="product-image">
-                    <img src="assets/images/redalebotella.png" alt="Red Ale">
+                    <img src="assets/images/redalebotella.png" alt="Botella de cerveza Colorada Red Ale">
                 </div>
                 <div class="product-info">
-                    <h3>Red Ale</h3>
-                    <p class="product-style">Amber Ale</p>
-                    <p class="product-desc">Ambar intenso con un equilibrio perfecto entre malta acaramelada y lúpulo
-                        suave.</p>
+                    <h3>Colorada</h3>
+                    <p class="product-style">Red Ale</p>
+                    <p class="product-desc">Rojiza y maltosa, con notas destacadas a caramelo y toffee.</p>
                     <div class="product-price">
-                        <span class="price">$4.50</span>
+                        <span class="price">$5.00</span>
                         <span class="price-unit">x unidad</span>
                     </div>
-                    <button class="btn-add-cart" type="button">Agregar al Carrito</button>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
                 </div>
-            </div>
+            </article>
 
-            <div class="product-card" data-category="especiales">
+            <article class="product-card" data-category="cervezas" data-id="volcanica-specialty"
+                data-name="Volcánica Specialty Ale" data-price="5" data-image="assets/images/volcanicabotella.png">
                 <div class="product-image">
-                    <img src="assets/images/volcanicabotella.png" alt="Volcánica">
-                    <span class="product-badge">Especial</span>
+                    <img src="assets/images/volcanicabotella.png" alt="Botella de cerveza Volcánica">
+                    <span class="product-badge">Edición especial</span>
                 </div>
                 <div class="product-info">
                     <h3>Volcánica</h3>
                     <p class="product-style">Specialty Ale</p>
-                    <p class="product-desc">Cerveza de carácter fuerte inspirada en nuestra tierra volcánica, robusta y
-                        única.</p>
+                    <p class="product-desc">Sour de trigo con cerezas de café, jamaica y sal marina de Galápagos.</p>
                     <div class="product-price">
-                        <span class="price">$6.00</span>
+                        <span class="price">$5.00</span>
                         <span class="price-unit">x unidad</span>
                     </div>
-                    <button class="btn-add-cart" type="button">Agregar al Carrito</button>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
                 </div>
-            </div>
+            </article>
 
-            <div class="product-card" data-category="especiales">
+            <article class="product-card" data-category="cervezas" data-id="blond-cafe"
+                data-name="Blond con Café" data-price="5" data-image="assets/images/whitestoutbotella.png">
                 <div class="product-image">
-                    <img src="assets/images/whitestoutbotella.png" alt="White Stout">
+                    <img src="assets/images/whitestoutbotella.png" alt="Botella de cerveza Blond con Café">
                     <span class="product-badge">Nueva</span>
                 </div>
                 <div class="product-info">
-                    <h3>White Stout</h3>
-                    <p class="product-style">Pale Stout</p>
-                    <p class="product-desc">Aspecto rubio pero con el sabor profundo de una stout a cacao y café.</p>
+                    <h3>Blond con Café</h3>
+                    <p class="product-style">White Stout</p>
+                    <p class="product-desc">Aspecto rubio con el sabor profundo de una stout a cacao y café de Galápagos.</p>
                     <div class="product-price">
-                        <span class="price">$5.50</span>
+                        <span class="price">$5.00</span>
                         <span class="price-unit">x unidad</span>
                     </div>
-                    <button class="btn-add-cart" type="button">Agregar al Carrito</button>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
                 </div>
-            </div>
+            </article>
+
+            <article class="product-card product-card--apparel" data-category="indumentaria" data-id="camiseta-clasica"
+                data-name="Camiseta Tortuga Santa Cruz" data-price="25" data-image="assets/images/2.png">
+                <div class="product-image">
+                    <img src="assets/images/2.png" alt="Diseño Tortuga Santa Cruz Brewery para camiseta">
+                    <span class="product-badge">Indumentaria</span>
+                </div>
+                <div class="product-info">
+                    <h3>Camiseta Tortuga</h3>
+                    <p class="product-style">Santa Cruz Brewery</p>
+                    <p class="product-desc">Camiseta con diseño inspirado en la tortuga gigante de Galápagos.</p>
+                    <label class="product-option-label" for="size-turtle">Talla</label>
+                    <select class="product-option" id="size-turtle" aria-label="Talla de camiseta Tortuga">
+                        <option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option>
+                    </select>
+                    <div class="product-price"><span class="price">$25.00</span><span class="price-unit">x unidad</span></div>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
+                </div>
+            </article>
+
+            <article class="product-card product-card--apparel product-card--apparel-light" data-category="indumentaria"
+                data-id="camiseta-galapagos" data-name="Camiseta First Beer Galápagos" data-price="25"
+                data-image="assets/images/3.png">
+                <div class="product-image">
+                    <img src="assets/images/3.png" alt="Diseño First Beer Brewed in Galápagos para camiseta">
+                    <span class="product-badge">Indumentaria</span>
+                </div>
+                <div class="product-info">
+                    <h3>Camiseta First Beer</h3>
+                    <p class="product-style">Galápagos Edition</p>
+                    <p class="product-desc">Un diseño que celebra la primera cerveza elaborada en Galápagos.</p>
+                    <label class="product-option-label" for="size-first-beer">Talla</label>
+                    <select class="product-option" id="size-first-beer" aria-label="Talla de camiseta First Beer">
+                        <option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option>
+                    </select>
+                    <div class="product-price"><span class="price">$25.00</span><span class="price-unit">x unidad</span></div>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
+                </div>
+            </article>
+
+            <article class="product-card product-card--apparel product-card--apparel-light" data-category="indumentaria"
+                data-id="camiseta-logo" data-name="Camiseta Logo Santa Cruz" data-price="25"
+                data-image="assets/images/1.png">
+                <div class="product-image">
+                    <img src="assets/images/1.png" alt="Diseño clásico Santa Cruz Brewery para camiseta">
+                    <span class="product-badge">Indumentaria</span>
+                </div>
+                <div class="product-info">
+                    <h3>Camiseta Logo Clásico</h3>
+                    <p class="product-style">Brewery Essential</p>
+                    <p class="product-desc">El diseño clásico de Santa Cruz Brewery para llevar la buena vibra contigo.</p>
+                    <label class="product-option-label" for="size-logo">Talla</label>
+                    <select class="product-option" id="size-logo" aria-label="Talla de camiseta Logo Clásico">
+                        <option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option>
+                    </select>
+                    <div class="product-price"><span class="price">$25.00</span><span class="price-unit">x unidad</span></div>
+                    <button class="btn-add-cart" type="button">Añadir al carrito <span aria-hidden="true">+</span></button>
+                </div>
+            </article>
 
         </div>
     </section>
 
-    <section class="shop-newsletter">
-        <div class="newsletter-container">
-            <h2>¿Quieres ofertas exclusivas?</h2>
-            <p>Suscríbete a nuestro newsletter y recibe noticias sobre nuevas cervezas y promociones.</p>
-            <form class="newsletter-form">
-                <input type="email" name="email" aria-label="Correo electrónico" placeholder="Tu email" required>
-                <button type="submit">Suscribirse</button>
+    <section class="checkout-section" id="solicitar-pedido" hidden>
+        <div class="checkout-heading">
+            <span class="shop-kicker">Último paso</span>
+            <h2>Solicita tu pedido</h2>
+            <p>Completa tus datos y elige cómo deseas pagar. Confirmaremos disponibilidad, entrega y total final antes de procesar el pedido.</p>
+        </div>
+
+        <div class="checkout-layout">
+            <form class="order-request-form" id="order-request-form" novalidate>
+                <div class="form-honeypot" aria-hidden="true">
+                    <label for="order-website">No completar este campo</label>
+                    <input type="text" id="order-website" name="_honey" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="checkout-panel-heading">
+                    <span>01</span>
+                    <div><p>Tus datos</p><h3>Información de contacto</h3></div>
+                </div>
+                <div class="order-form-grid">
+                    <div class="order-field"><label for="order-name">Nombre <span>*</span></label><input id="order-name" name="nombre" type="text" autocomplete="given-name" required></div>
+                    <div class="order-field"><label for="order-lastname">Apellidos <span>*</span></label><input id="order-lastname" name="apellidos" type="text" autocomplete="family-name" required></div>
+                    <div class="order-field order-field--wide"><label for="order-email">Correo electrónico <span>*</span></label><input id="order-email" name="email" type="email" autocomplete="email" required></div>
+                    <div class="order-field"><label for="order-phone">Teléfono / WhatsApp <span>*</span></label><input id="order-phone" name="telefono" type="tel" autocomplete="tel" placeholder="+593 99 000 0000" required></div>
+                    <div class="order-field"><label for="order-country">País</label><input id="order-country" name="pais" value="Ecuador" readonly></div>
+                    <div class="order-field"><label for="order-province">Provincia <span>*</span></label><input id="order-province" name="provincia" autocomplete="address-level1" required></div>
+                    <div class="order-field"><label for="order-city">Ciudad <span>*</span></label><input id="order-city" name="ciudad" autocomplete="address-level2" required></div>
+                    <div class="order-field order-field--wide"><label for="order-address">Dirección <small>Opcional</small></label><input id="order-address" name="direccion" autocomplete="street-address" placeholder="Solo si deseas coordinar entrega"></div>
+                    <div class="order-field order-field--wide"><label for="order-notes">Notas <small>Opcional</small></label><textarea id="order-notes" name="notas" rows="4" placeholder="Preferencias, fecha estimada o información útil para tu pedido"></textarea></div>
+                </div>
+                <label class="order-consent"><input type="checkbox" required><span>Autorizo el uso de estos datos únicamente para responder y coordinar esta solicitud.</span></label>
+                <button class="order-submit" type="submit"><span>Solicitar pedido</span><b aria-hidden="true">→</b></button>
+                <p class="order-form-status" role="status" aria-live="polite" hidden></p>
             </form>
+
+            <aside class="order-summary" aria-label="Resumen de la solicitud">
+                <div class="checkout-panel-heading">
+                    <span>02</span>
+                    <div><p>Resumen</p><h3>Tu selección</h3></div>
+                </div>
+                <div class="checkout-summary-labels"><span>Producto</span><span>Subtotal</span></div>
+                <div class="checkout-items"></div>
+                <div class="checkout-totals"><span>Subtotal referencial</span><strong data-checkout-subtotal>$0.00</strong></div>
+                <div class="checkout-delivery"><span aria-hidden="true">⌖</span><div><strong>Entrega por confirmar</strong><p>Coordinaremos contigo la modalidad y su valor.</p></div></div>
+
+                <fieldset class="payment-methods">
+                    <legend>Forma de pago</legend>
+
+                    <label class="payment-method">
+                        <input type="radio" name="forma_pago" value="transferencia" form="order-request-form" checked required>
+                        <span><strong>Transferencia bancaria directa</strong><small>Realiza el pago en nuestra cuenta bancaria.</small></span>
+                    </label>
+
+                    <div class="bank-transfer-details">
+                        <span class="bank-transfer-kicker">Datos para transferir</span>
+                        <dl>
+                            <div><dt>Banco</dt><dd>Banco Pacífico</dd></div>
+                            <div><dt>Tipo de cuenta</dt><dd>Cuenta corriente</dd></div>
+                            <div><dt>Número de cuenta</dt><dd>7378467</dd></div>
+                            <div><dt>Titular</dt><dd>Marcelo Hernan Herrera Morales</dd></div>
+                            <div><dt>Cédula</dt><dd>1712961414</dd></div>
+                        </dl>
+                        <p>El pedido se procesará cuando confirmemos la recepción del pago. Consulta el valor del envío y envía tu comprobante por WhatsApp.</p>
+                        <a href="https://wa.me/593984295295?text=Hola%20Santa%20Cruz%20Brewery%2C%20quiero%20enviar%20el%20comprobante%20de%20mi%20pedido."
+                            target="_blank" rel="noopener noreferrer">Enviar comprobante por WhatsApp <span aria-hidden="true">→</span></a>
+                    </div>
+
+                    <label class="payment-method">
+                        <input type="radio" name="forma_pago" value="contra_entrega" form="order-request-form" required>
+                        <span><strong>Contra entrega</strong><small>Disponible según la cobertura de entrega.</small></span>
+                    </label>
+
+                    <div class="cash-delivery-details" hidden>
+                        <strong>Pago en efectivo</strong>
+                        <p>Paga en efectivo en el momento de recibir tu pedido. Confirmaremos previamente la disponibilidad, cobertura y total final.</p>
+                    </div>
+                </fieldset>
+
+                <p class="order-privacy">Tus datos personales se utilizarán únicamente para gestionar y coordinar tu pedido.</p>
+            </aside>
         </div>
     </section>
+
+    <div class="cart-overlay"></div>
+    <aside class="cart-drawer" aria-hidden="true" aria-label="Carrito de compra">
+        <div class="cart-header">
+            <div><span>Tu selección</span><h2>Carrito <small>(<b data-cart-count>0</b>)</small></h2></div>
+            <button class="cart-close" type="button" aria-label="Cerrar carrito">×</button>
+        </div>
+        <div class="cart-empty">
+            <span aria-hidden="true">🛒</span>
+            <h3>Tu carrito está vacío</h3>
+            <p>Explora la tienda y añade tus productos favoritos.</p>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal"><span>Subtotal referencial</span><strong data-cart-subtotal>$0.00</strong></div>
+            <p>El envío y la disponibilidad se confirman al responder tu solicitud.</p>
+            <button class="cart-checkout-button" type="button">Continuar con mis datos <span aria-hidden="true">→</span></button>
+        </div>
+    </aside>
 
     <footer class="footer">
         <div class="footer-container">
