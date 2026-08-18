@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Santa Cruz Brewery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script>
@@ -36,6 +36,7 @@
                 menuToggle.addEventListener('click', function () {
                     menu.classList.toggle('active');
                     menuToggle.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', menu.classList.contains('active'));
                 });
             }
         });
@@ -54,13 +55,13 @@
             <nav class="menu">
                 <a href="index.html">Inicio</a>
                 <a href="sobre-nosotros.html">Nosotros</a>
-                <a href="tienda.html">Tienda</a>
+                <a href="cervezas.html">Cervezas</a>
                 <a href="restaurante.html">Restaurante</a>
-                <a href="#">Planta</a>
-                <a href="contacto.html" class="active">Contacto</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="contacto.html" class="active">Contáctanos</a>
             </nav>
 
-            <button class="menu-toggle" aria-label="Menu">
+            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -100,7 +101,7 @@
                         <span class="contacto-icon">📞</span>
                         <div>
                             <strong>Teléfono</strong>
-                            <p>+593 99 123 4567</p>
+                            <p>0984295295</p>
                         </div>
                     </div>
 
@@ -125,7 +126,7 @@
                 <div class="contacto-proceso">
                     <h3>Nuestro Proceso de Consulta</h3>
                     <p>Cada proyecto es único. Cuando nos contactas, iniciamos una conversación
-                        detallada para entender tus objetivos, presupuesto ytimeline. Luego de
+                        detallada para entender tus objetivos, presupuesto y cronograma. Luego de
                         nuestra primera reunión, te enviaremos una propuesta personalizada con
                         los siguientes pasos. No hay compromiso obligatorio, queremos que te
                         sientas cómodo antes de avanzar.</p>
@@ -157,7 +158,7 @@
                             <option value="nueva-planta">Nueva Planta Cervecera</option>
                             <option value="asesoria">Asesoría Técnica</option>
                             <option value="distribucion">Distribución</option>
-                            <option value="franchising">Franchising</option>
+                            <option value="franquicia">Franquicia</option>
                             <option value="otro">Otro</option>
                         </select>
                     </div>
@@ -199,6 +200,7 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="cervezas.html">Cervezas</a></li>
                     <li><a href="tienda.html">Tienda</a></li>
                     <li><a href="restaurante.html">Restaurante</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -208,7 +210,7 @@
                 <h4>Contacto</h4>
                 <ul>
                     <li>📍 Santa Cruz, Galápagos, Ecuador</li>
-                    <li>📞 +593 99 123 4567</li>
+                    <li>📞 0984295295</li>
                     <li>✉️ info@santacruzbrewery.com</li>
                 </ul>
             </div>

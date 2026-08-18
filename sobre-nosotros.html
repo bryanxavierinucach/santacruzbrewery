@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros - Santa Cruz Brewery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script>
@@ -36,6 +36,7 @@
                 menuToggle.addEventListener('click', function () {
                     menu.classList.toggle('active');
                     menuToggle.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', menu.classList.contains('active'));
                 });
             }
         });
@@ -54,13 +55,13 @@
             <nav class="menu">
                 <a href="index.html">Inicio</a>
                 <a href="sobre-nosotros.html" class="active">Nosotros</a>
-                <a href="tienda.html">Tienda</a>
+                <a href="cervezas.html">Cervezas</a>
                 <a href="restaurante.html">Restaurante</a>
-                <a href="#">Planta</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="contacto.html">Contáctanos</a>
             </nav>
 
-            <button class="menu-toggle" aria-label="Menu">
+            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -83,14 +84,17 @@
                     caseros (HomeBrewers). Ese año nació nuestro proyecto, impulsados por familiares y amigos que
                     probaron nuestros primeros “experimentos” y nos motivaron a formalizar la idea: crear una cerveza
                     100% hecha en Galápagos.</p>
-                <p style="text-align: justify;">Nuestra fábrica de cerveza es más que un negocio; es un sueño compartida
+                <p style="text-align: justify;">Nuestra fábrica de cerveza es más que un negocio; es un sueño compartido
                     por un equipo de entusiastas dedicados a perfeccionar el arte de la cervecería. Cada lote que
                     elaboramos es una expresión de nuestra pasión por la innovación y el respeto por las tradiciones
                     cerveceras.</p>
+                <p style="text-align: justify;">Desde el año 2022 hemos conseguido un total de 33 medallas cerveceras en
+                    competencias nacionales e internacionales, hecho que ratifica la calidad y la innovación de
+                    nuestras cervezas.</p>
             </div>
             <div class="about-image">
-                <img src="https://santacruzbrewery.ec/wp-content/uploads/2025/04/Diseno-sin-titulo-700x700.png"
-                    alt="Nuestra Cervecería">
+                <img src="assets/images/cerveza1.webp" loading="lazy"
+                    alt="Cervezas de Santa Cruz Brewery en Galápagos">
             </div>
         </div>
     </section>
@@ -106,8 +110,8 @@
                 <div class="mv-card mv-vision">
                     <span class="mv-label">Nuestra Visión</span>
                     <h3>Ser reconocidos como un referente en el mundo cervecero, llevando la experiencia de Santa Cruz
-                        Brewery a cada rincón, destacando por nuestra pasión, innovación y compromiso con la excelencia.
-                    </h3>
+                        Brewery Galápagos a cada rincón, destacando por nuestra pasión, innovación y excelencia, con un
+                        firme compromiso con la conservación de Galápagos.</h3>
                 </div>
             </div>
         </div>
@@ -156,7 +160,7 @@
         <div class="process-container">
             <div class="process-header">
                 <h2>Nuestro Proceso</h2>
-                <p>De la ingredients a tu vaso</p>
+                <p>De los ingredientes a tu vaso</p>
             </div>
 
             <div class="process-timeline">
@@ -169,14 +173,14 @@
 
                 <div class="process-step">
                     <div class="step-number">02</div>
-                    <h3>Molienda y Mash</h3>
-                    <p>Los granos se muelen justo antes del cocido para preservar sus sabores y aromas naturales.</p>
+                    <h3>Molienda y Maceración</h3>
+                    <p>Los granos se muelen justo antes de la cocción para preservar sus sabores y aromas naturales.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">03</div>
-                    <h3>Cocido y Lupulado</h3>
-                    <p>Nuestro maestro cervecero controla cada变量的 para lograr el equilibrio perfecto de sabores.</p>
+                    <h3>Cocción y Lupulado</h3>
+                    <p>Nuestro maestro cervecero controla cada variable para lograr el equilibrio perfecto de sabores.</p>
                 </div>
 
                 <div class="process-step">
@@ -216,6 +220,7 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="cervezas.html">Cervezas</a></li>
                     <li><a href="tienda.html">Tienda</a></li>
                     <li><a href="restaurante.html">Restaurante</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -225,7 +230,7 @@
                 <h4>Contacto</h4>
                 <ul>
                     <li>📍 Santa Cruz, Galápagos, Ecuador</li>
-                    <li>📞 +593 99 123 4567</li>
+                    <li>📞 0984295295</li>
                     <li>✉️ info@santacruzbrewery.com</li>
                 </ul>
             </div>
