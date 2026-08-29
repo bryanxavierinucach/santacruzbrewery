@@ -2968,6 +2968,74 @@ body.cart-open {
     }
 }
 
+/* CONSISTENT INTERNAL HERO TYPOGRAPHY */
+
+.hero-simple .hero-simple-content h1 {
+    max-width: 900px;
+    margin: 12px 0 18px;
+    font-size: clamp(56px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+.hero-simple:not(.plant-hero):not(.restaurant-hero) .hero-simple-content h1 {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.hero-simple .hero-subtitle,
+.hero-simple .contact-eyebrow,
+.hero-simple .plant-eyebrow,
+.hero-simple .restaurant-eyebrow {
+    display: block;
+    margin-bottom: 12px;
+    color: #f59e0b;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.hero-simple .hero-simple-content > p {
+    max-width: 620px;
+    margin-top: 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.6;
+}
+
+.hero-simple.contact-hero .hero-simple-content > p,
+.hero-simple.hero-shop .hero-simple-content > p {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .hero-simple .hero-simple-content h1 {
+        margin-top: 10px;
+        margin-bottom: 16px;
+        font-size: clamp(44px, 13vw, 62px);
+        line-height: 0.98;
+        letter-spacing: -1px;
+    }
+
+    .hero-simple .hero-subtitle,
+    .hero-simple .contact-eyebrow,
+    .hero-simple .plant-eyebrow,
+    .hero-simple .restaurant-eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .hero-simple .hero-simple-content > p {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+}
+
 /* BEERS PAGE */
 
 .hero-beers {
