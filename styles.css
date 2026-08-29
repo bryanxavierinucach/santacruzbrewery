@@ -161,11 +161,7 @@ h6 {
 
 .hero-art {
     width: 100%;
-    background:
-        radial-gradient(circle at 50% 72%, rgba(235, 143, 33, 0.2) 0%, transparent 30%),
-        radial-gradient(circle at 12% 18%, rgba(27, 111, 87, 0.34) 0%, transparent 34%),
-        radial-gradient(circle at 88% 24%, rgba(82, 106, 35, 0.2) 0%, transparent 30%),
-        linear-gradient(150deg, #061512 0%, #10251e 43%, #21150d 100%);
+    background: #11100f;
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -175,10 +171,7 @@ h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        repeating-linear-gradient(118deg, transparent 0 56px, rgba(255, 255, 255, 0.018) 57px 59px),
-        radial-gradient(ellipse 70% 48% at 50% 64%, rgba(245, 158, 11, 0.16) 0%, transparent 68%),
-        linear-gradient(to bottom, rgba(2, 10, 8, 0.3) 0%, transparent 35%, rgba(5, 8, 6, 0.42) 100%);
+    background: radial-gradient(circle at 50% 0, rgba(245, 158, 11, 0.08), transparent 42%);
     z-index: 0;
     pointer-events: none;
 }
@@ -186,16 +179,11 @@ h6 {
 .hero-art::after {
     content: '';
     position: absolute;
-    right: -8%;
-    bottom: -16%;
-    left: -8%;
-    height: 38%;
-    background:
-        radial-gradient(ellipse at 18% 10%, rgba(19, 70, 54, 0.92) 0 28%, transparent 29%),
-        radial-gradient(ellipse at 50% 2%, rgba(14, 53, 42, 0.96) 0 35%, transparent 36%),
-        radial-gradient(ellipse at 84% 12%, rgba(24, 65, 42, 0.9) 0 28%, transparent 29%);
-    filter: blur(10px);
-    opacity: 0.82;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 26%;
+    background: linear-gradient(to top, rgba(30, 23, 17, 0.16), transparent);
     z-index: 0;
     pointer-events: none;
 }
@@ -268,22 +256,7 @@ h6 {
 }
 
 .hero-art-image--68825::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 14%;
-    z-index: 0;
-    width: min(760px, 88vw);
-    height: clamp(80px, 13vw, 150px);
-    border: 1px solid rgba(255, 190, 92, 0.24);
-    border-radius: 50%;
-    background:
-        radial-gradient(ellipse at center, rgba(255, 190, 88, 0.55) 0%, rgba(224, 126, 26, 0.28) 27%, rgba(9, 32, 25, 0.84) 62%, rgba(3, 13, 10, 0) 74%);
-    box-shadow:
-        0 0 60px rgba(235, 143, 33, 0.22),
-        inset 0 12px 24px rgba(255, 195, 103, 0.12);
-    transform: translateX(-50%) scaleY(0.45);
-    filter: blur(0.3px);
+    content: none;
 }
 
 .hero-art-image--68825::after {
@@ -291,8 +264,7 @@ h6 {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: url("assets/images/pack.png") center bottom / contain no-repeat;
-    filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.48));
+    background: url("assets/images/imagenIndex.jpeg") center bottom / contain no-repeat;
 }
 
 /* HERO IMAGE */
@@ -2861,9 +2833,7 @@ body.cart-open {
 /* BEERS PAGE */
 
 .hero-beers {
-    background:
-        linear-gradient(rgba(13, 8, 5, 0.72), rgba(13, 8, 5, 0.82)),
-        url("assets/images/Todas.png") center 42% / cover no-repeat;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
 .beers-page {
