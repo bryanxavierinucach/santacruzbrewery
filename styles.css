@@ -2892,9 +2892,14 @@ body.cart-open {
     position: relative;
 }
 
+.beer-detail-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
 .beer-detail-number {
     display: block;
-    margin-bottom: 22px;
     color: rgba(26, 26, 26, 0.18);
     font-family: 'Vhiena', serif;
     font-size: 76px;
@@ -2911,11 +2916,53 @@ body.cart-open {
 }
 
 .beer-detail-content h2 {
-    margin-bottom: 24px;
+    margin: 0;
     color: #1a1a1a;
     font-size: clamp(42px, 6vw, 72px);
     line-height: 1;
     text-transform: uppercase;
+}
+
+.beer-detail-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.beer-detail-stats {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: #6c3b08;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.beer-detail-stats span {
+    min-width: 68px;
+    min-height: 58px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(217, 119, 6, 0.42);
+    border-radius: 8px;
+    background: #fff8ed;
+    box-shadow: 0 6px 16px rgba(120, 68, 10, 0.09);
+}
+
+.beer-detail-stats strong {
+    display: block;
+    margin-bottom: 2px;
+    color: #d97706;
+    font-size: 17px;
+    line-height: 1;
 }
 
 .beer-detail-content > p:last-child {
@@ -2972,6 +3019,20 @@ body.cart-open {
 
     .beer-detail-number {
         font-size: 58px;
+    }
+
+    .beer-detail-stats {
+        gap: 8px;
+    }
+
+    .beer-detail-stats span {
+        min-width: 62px;
+        min-height: 54px;
+        padding: 7px 10px;
+    }
+
+    .beer-detail-stats strong {
+        font-size: 15px;
     }
 
     .beer-detail-content > p:last-child {
